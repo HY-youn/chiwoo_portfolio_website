@@ -1,0 +1,839 @@
+@charset 'UTF-8';
+
+body .pf-container {
+  position: relative;
+  width: 100%;
+
+}
+
+.headerline {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease-in-out;
+  color: #000;
+
+}
+
+
+/* nav list group */
+.pf-list-group {
+  display: flex;
+  margin: 0 auto;
+  width: 128rem;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0 18rem;
+  z-index: 999;
+  transition: height 0.1s ease-in-out, width 0.1s ease-in-out;
+}
+
+.pf-list-group li {
+  width: 32rem;
+  line-height: 32rem;
+  position: relative;
+  border: 1px solid #333;
+  border-radius: 2.5rem;
+  box-shadow: 1px 1px 5px #000;
+}
+
+.pf-list-group li a:hover img {
+  width: 80%;
+}
+
+.pf-list-group a {
+  display: block;
+  font-size: 3.6rem;
+  /* background-color: #fc0; */
+  width: 32rem;
+  color: #000;
+  height: 32rem;
+  position: relative;
+}
+
+.pf-list-group li:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 0rem;
+  margin-right: -9rem;
+  height: 10rem;
+  border-right: 0.3rem solid #000;
+  display: block;
+}
+
+.pf-list-group li a img {
+  vertical-align: top;
+  width: 75%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.pf-img-trans {
+  transition: opacity 0.2s ease-in-out;
+  /* opacity 변화에 대한 애니메이션 설정 */
+  opacity: 1;
+  /* 기본 opacity 값 */
+}
+
+/* pf-list-group 메인 네비게이션 위치 이동 */
+
+.pf-list-group.on {
+  position: absolute;
+  margin: 0 auto;
+  width: 25rem;
+  height: 10rem;
+  right: 12.5%;
+  top: 0;
+  z-index: 999;
+  opacity: 0.5;
+  gap: 0 5rem;
+}
+
+.pf-list-group.on li {
+  width: 6.25rem;
+  line-height: 6.25rem;
+  position: relative;
+  border: 0.05rem solid #333;
+  border-radius: 1.25rem;
+  box-shadow: 0.05rem 0.05rem 0.25rem #000;
+}
+
+.pf-list-group.on li a:hover img {
+  width: 80%;
+}
+
+.pf-list-group.on a {
+  display: block;
+  font-size: 3.6rem;
+  width: 6.25rem;
+  color: #000;
+  line-height: 6.25rem;
+  height: 6.25rem;
+  position: relative;
+}
+
+.pf-list-group.on li:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 0rem;
+  height: 0.2rem;
+  border-right: 0.05rem solid #000;
+  display: block;
+}
+
+.pf-list-group.on li a img {
+  vertical-align: top;
+  width: 75%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+/* header 영역 */
+
+header .header-container {
+  position: relative;  
+}
+
+header .header-panel {
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 160vh;
+  position: relative;
+  background: linear-gradient(0deg, rgb(255, 255, 255) 65%, rgb(70, 70, 70));
+}
+
+/* .txt-panel {} */
+
+/* header title 텍스트 영역 */
+header .header-title1 {
+  display: block;
+  top: 60rem;
+  left: 0;
+  width: 100%;
+  position: absolute;
+
+}
+
+header .header-title2 {
+  display: block;
+  top: 60rem;
+  opacity: 0;
+  left: 0;
+  width: 100%;
+  position: absolute;
+}
+
+header .header-title3 {
+  display: block;
+  top: 60rem;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  position: absolute;
+}
+
+header .header-title4 {
+  display: block;
+  top: 60rem;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  position: absolute;
+}
+
+header .header-title5 {
+  display: block;
+  top: 60rem;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  position: absolute;
+}
+
+header .header-title6 {
+  display: block;
+  top: 60rem;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  position: absolute;
+}
+
+header .header-title7 {
+  display: block;
+  top: 60rem;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  position: absolute;
+}
+
+header .header-title8 {
+  display: block;
+  top: 60rem;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  position: absolute;
+}
+
+header .header-title9 {
+  display: block;
+  top: 60rem;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  position: absolute;
+}
+
+header .header-title10 {
+  display: block;
+  top: 60rem;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  position: absolute;
+}
+
+header .header-title11 {
+  display: block;
+  top: 60rem;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  position: absolute;
+}
+
+header .header-title12 {
+  display: block;
+  top: 60rem;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  position: absolute;
+}
+
+header .header-title13 {
+  display: block;
+  top: 60rem;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  position: absolute;
+}
+
+header .header-title14 {
+  display: block;
+  top: 60rem;
+  opacity: 0;
+  left: 0;
+  width: 100%;
+  position: absolute;
+}
+
+header .header-title15 {
+  display: block;
+  top: 60rem;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  position: absolute;
+}
+
+header .header-title16 {
+  display: block;
+  top: 60rem;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  position: absolute;
+}
+
+.header-title1 h3 {
+  display: block;
+  position: absolute;
+  font-size: 10rem;
+  color: #fff;
+  top: 60%;
+  left: 60%;
+  line-height: 15rem;
+  transform: translateY(-50%);
+  height: 20rem;
+  z-index: 999;
+  opacity: 1;
+  text-shadow: 0px 0px 5px #333;
+}
+
+.header-container h3 {
+  display: block;
+  position: absolute;
+  font-size: 10rem;
+  color: #fff;
+  top: 60%;
+  left: 60%;
+  transform: translateY(-50%);
+  line-height: 15rem;
+  height: 20rem;
+  z-index: 999;
+  opacity: 1;
+  text-shadow: 0px 0px 5px #333;
+}
+
+/*  header title - img  헤더 이미지 출력 */
+
+header .header-img-panel {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 160vh;
+  position: absolute;
+  background-color: transparent;
+  z-index: 100;
+}
+
+header .header-img-panel-box {
+  position: absolute;
+  overflow: hidden;
+  box-shadow: 1px 1px 15px #333;
+  position: absolute;
+  width: 108rem;
+  height: 72rem;
+  top: 50%;
+  left: 20%;
+  transform: translateY(-50%) translateX(-30%);
+  background-attachment: fixed;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+}
+
+header .header-tit-img1 {
+  position: absolute;
+  object-fit: cover;
+  vertical-align: top;
+  width: 120%;
+  filter: blur(0.5rem);
+}
+
+header .header-tit-img2 {
+  position: absolute;
+  object-fit: cover;
+  opacity: 1;
+  width: 100%;
+}
+
+header .header-tit-img3 {
+  position: absolute;
+  object-fit: cover;
+  opacity: 1;
+  width: 120%;
+  top: -25rem;
+  left: -5rem;
+}
+
+header .header-tit-img4 {
+  position: absolute;
+  object-fit: cover;
+  opacity: 1;
+  width: 120%;
+}
+
+header .header-tit-img5 {
+  position: absolute;
+  object-fit: cover;
+  opacity: 1;
+  width: 120%;
+  left: -5rem;
+}
+
+header .header-tit-img6 {
+  position: absolute;
+  object-fit: cover;
+  opacity: 0;
+  width: 120%;
+}
+
+header .header-tit-img7 {
+  position: absolute;
+  object-fit: cover;
+  opacity: 0;
+  width: 12.5%;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+header .header-tit-img8 {
+  position: absolute;
+  object-fit: cover;
+  opacity: 1;
+  width: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  top: 30%;
+  left: 50%;
+}
+
+header .header-tit-img9 {
+  position: absolute;
+  object-fit: cover;
+  opacity: 0;
+  width: 100%;
+}
+
+header .header-tit-img10 {
+  position: absolute;
+  object-fit: cover;
+  opacity: 1;
+  width: 100%;
+}
+
+header .header-tit-img11 {
+  position: absolute;
+  object-fit: cover;
+  opacity: 0;
+  width: 105%
+}
+
+header .header-tit-img12 {
+  position: absolute;
+  object-fit: cover;
+  opacity: 0;
+}
+
+header .header-tit-img13 {
+  position: absolute;
+  object-fit: cover;
+  opacity: 0;
+}
+
+header .header-tit-img14 {
+  position: absolute;
+  object-fit: cover;
+  opacity: 0;
+}
+
+header .header-tit-img15 {
+  position: absolute;
+  object-fit: cover;
+  opacity: 0;
+}
+
+header .header-tit-img16 {
+  position: absolute;
+  object-fit: cover;
+  opacity: 0;
+}
+
+/* swiper */
+.pf-swiper-container {
+  display: block;
+  position: relative;
+}
+
+.pf-swiper-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  transition: all 1s ease-in-out;
+  filter: blur(1rem);
+}
+
+/* 스와이퍼 영역 */
+.swiper {
+  width: 90%;
+  height: 100vh;
+}
+
+.mySwiper {
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  vertical-align: top;
+  overflow: hidden;
+}
+
+.mySwiper .swiper-slide{
+  padding-top: 5rem;
+}
+.mySwiper .swiper-slide img {
+  object-fit: contain;
+  width: 100%;
+  box-shadow: 0px 0px 5px #000;
+}
+
+.pf-portfolio {
+  height: 100vh;
+  width: 100%;
+  background-color: #fcc;
+  position: relative;
+}
+
+.pf-portfolio .pf-title {
+  position: absolute;
+  width: 110rem;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+.pf-portfolio .pf-title h3 {
+  line-height: 7rem;
+  text-align: center;
+  font-size: 5rem;
+}
+
+.pf-portfolio .pf-title h3 span {
+  font-size: 5rem;
+
+}
+
+.pf-portfolio .pf-title h3 span:hover {
+  color: rgb(80, 0, 240);
+  cursor: pointer;
+}
+
+.pf-portfolio .pf-title h3 span:last-child a {
+  transition: all 0.3s ease-in-out;
+  font-size: 5rem;
+
+}
+
+.pf-portfolio .pf-title h3 span:last-child a:visited {
+  color: #000;
+}
+
+.pf-portfolio .pf-title h3 span:last-child:hover a {
+  font-size: 6rem;
+  color: rgb(30, 70, 255);
+}
+
+.pf-portfolio .pf-title-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100vh;
+}
+
+.pf-portfolio .pf-title-logo li.title-logo-1 {
+  background-image: url(./img/logo_photoshop.png);
+  background-position: center center;
+  background-size: 50% 50%;
+  width: 20rem;
+  height: 20rem;
+  display: block;
+  background-repeat: no-repeat;
+}
+
+.pf-portfolio .pf-title-logo li.title-logo-2 {
+  background-image: url(./img/logo_ai.png);
+  background-position: center center;
+  background-size: 50% 50%;
+  width: 20rem;
+  height: 20rem;
+  display: block;
+  background-repeat: no-repeat;
+}
+
+.pf-portfolio .pf-title-logo li.title-logo-3 {
+  background-image: url(./img/logo_pr.png);
+  background-position: center center;
+  background-size: 50% 50%;
+  width: 20rem;
+  height: 20rem;
+  display: block;
+  background-repeat: no-repeat;
+}
+
+.pf-portfolio .pf-title-logo li.title-logo-4 {
+  background-image: url(./img/logo_ae.png);
+  background-position: center center;
+  background-size: 50% 50%;
+  width: 20rem;
+  height: 20rem;
+  display: block;
+  background-repeat: no-repeat;
+}
+
+.pf-portfolio .pf-title-logo li.title-logo-1,
+.pf-portfolio .pf-title-logo li.title-logo-2,
+.pf-portfolio .pf-title-logo li.title-logo-3,
+.pf-portfolio .pf-title-logo li.title-logo-4 {
+  transition: all 0.3s ease-in-out;
+}
+
+.pf-portfolio .pf-title-logo li.title-logo-1:hover,
+.pf-portfolio .pf-title-logo li.title-logo-2:hover,
+.pf-portfolio .pf-title-logo li.title-logo-3:hover,
+.pf-portfolio .pf-title-logo li.title-logo-4:hover {
+  background-size: 75% 75%;
+}
+
+
+.video-points {
+  padding: 0 !important;
+  text-align: center;
+}
+
+.video-points .col-lg-4 {
+  margin-bottom: 20px;
+}
+
+.video-play-button {
+  position: absolute;
+  z-index: 13;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 32px;
+  height: 44px;
+  border-radius: 50%;
+  display: block;
+  box-sizing: content-box;
+  padding: 1.125rem 1.25rem 1.125rem 1.75rem;
+  cursor: pointer;
+}
+
+.video-play-button::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  display: block;
+  padding: 1.125rem 1.25rem 1.125rem 1.75rem;
+  background-color: var(--bs-primary);
+  animation: pulseBorder 1000ms ease-in-out infinite;
+}
+
+.video-play-button::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: block;
+  background-color: var(--bs-primary);
+  padding: 1.125rem 1.25rem 1.125rem 1.75rem;
+}
+
+.video-play-button span {
+  position: relative;
+  z-index: 3;
+  display: block;
+  width: 0;
+  height: 0;
+  top: 6px;
+  left: 4px;
+  border-left: 26px solid #fff;
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+}
+
+.video-modal .modal-dialog {
+  max-width: 1280px;
+  max-height: 760px;
+}
+
+@keyframes pulseBorder {
+  0% {
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
+    opacity: 0;
+  }
+}
+
+#pf-caption1,
+#pf-caption2,
+#pf-caption3 {
+  width: 5%;
+}
+
+.tooltip-blog {
+  position: relative;
+
+}
+
+.tooltip-blog::after {
+  content: '';
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 0%;
+  height: 0.1rem;
+  background-color: #000;
+  bottom: 0;
+  transform-origin: center;
+  left: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.tooltip-blog:hover::after {
+  width: 100%;
+  transform-origin: center;
+}
+
+
+section .sec-contact {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(25, 0, 70, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+section .sec-contact form {
+  width: 100rem;
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translateY(-50%) translateX(-50%);
+
+}
+
+section .sec-contact label {
+  font-size: 10rem;
+  padding: 0 2rem;
+}
+
+section .sec-contact input {
+  font-size: 5rem;
+  width: 100rem;
+}
+
+section .sec-contact span {
+  color: rgba(200, 30, 70);
+  text-indent: 10rem;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 3rem;
+}
+
+section .sec-contact textarea {
+  height: 20rem;
+  font-size: 5rem;
+}
+
+.submit-box {
+  margin-top: 3rem;
+  display: flex;
+  width: 100rem;
+  text-align: center;
+  gap: 0 10rem;
+}
+
+.submit-box .submit-btn {
+  width: 30rem;
+  padding: 0 5rem;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+}
+
+.submit-box .reset-btn {
+  width: 30rem;
+  padding: 0 5rem;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+}
+
+.submit-box .reset-btn:hover,
+.submit-btn:hover {
+  color: #fff;
+  background-color: #333;
+}
+
+#submit-cb {
+  width: 5rem;
+  height: 5rem;
+  vertical-align: top;
+}
+
+.cb-span {
+  text-indent: 1rem !important;
+}
