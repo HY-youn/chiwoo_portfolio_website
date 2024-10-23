@@ -258,7 +258,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     end: '+=6000',
     pin: true,
     scrub: true,
-    markers: true,
+    // markers: true,
     toggleActions: "play none resume none",
     id: "title1"
 
@@ -270,13 +270,23 @@ document.addEventListener("DOMContentLoaded", (event) => {
     end: '+=6000',
     pin: true,
     scrub: true,
-    markers: true,
+    // markers: true,
     pinSpacing: true,
     toggleActions: "play none resume none",
     id: "title-img"
   })
 
-
+// ScrollTrigger.create({
+//     trigger: 'section .about-me',
+//     start: '0% top',
+//     end: '0',
+//     pin: true,
+//     scrub: true,
+//     markers: true,
+//     pinSpacing: true,
+//     toggleActions: "play none resume none",
+//     id: "title-img"
+// })
 
   // gsap.to('.header-title1', {
   //   scrollTrigger : {
