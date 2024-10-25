@@ -1,0 +1,433 @@
+body { 
+  overflow: hidden;
+}
+
+.container { 
+  margin: 0 auto;
+  width: auto;
+  height: 100vh;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+.container.scrolldown{
+  margin-top: -100vh;
+}
+.container-bg {
+  background-image: url(../img/background-autumn.png);
+  background-position: center center;
+  background-size:contain;
+  width: 100%;
+  height: 100vh;
+  display: block;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.container-bg {
+  display: flex;
+justify-content: center;
+align-items: center;
+}
+.container-bg2{
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  background-image: url(../img/background-autumn.png);
+  background-position: center center;
+  background-size: contain;
+  z-index: 10;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+.container .ws-tit{
+  position: relative;
+  width: 100%;
+  height: 20rem;
+  margin: 0 0 20rem 0;
+  text-align: center;
+  align-items: center;
+  color: rgb(120, 40, 0)
+}
+.ws-tit h2 {
+  font-size: 3rem;
+}
+.ws-tit h2 span{
+  font-size: 2.5rem;
+}
+
+.ws-tit h1{
+  font-size: 5rem;
+}
+
+.ws-tit p{
+  margin-top: 2rem;
+  font-size: 2rem;
+  line-height: 5rem;
+  color: #333;
+}
+.ws-tit hr{
+  color:transparent;
+  border-bottom: 3px solid #740;
+  opacity: 1;
+  width: 25rem;
+  margin: 0 auto;
+  
+}
+.ws-tit hr~hr {
+  margin: 0 auto;
+  width: 25rem;
+}
+
+.ws-tit-word {
+  position: absolute;
+  background-image: url(../img/maple_title.png);
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  width: 48rem;
+  height: 48rem;
+  margin: 0 auto;
+}
+.ws-tit-word span{
+  margin-top: 12rem;
+  margin-right: 5rem;
+  rotate: 27deg;
+  font-size: 5rem;
+  opacity: .3;
+}
+.ws-play-btn{
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  margin-top: 30rem;
+  position: absolute;
+  width: 15rem;
+  height: 5rem;
+  color:transparent;
+  display: block;
+  border: 0px solid #000;
+  box-shadow: 5px 5px 0px rgb(219, 195, 164);
+  border-radius: 50px;
+  background-color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+.ws-play-btn:hover{
+  box-shadow: 5px 5px 0px rgb(120, 50, 0);
+  background-color: rgba(120, 40, 0, 0.5);
+  cursor: pointer;
+}
+.ws-play-btn::before {
+  content:'';
+  width: 0;
+  height: 0;
+  top: 20%;
+  left:20px;
+  position: absolute;
+  border-color:transparent;
+  border-top: 14px solid;
+  border-left: 24px solid #740;
+  border-bottom: 14px solid;
+}
+.ws-play-btn:hover::before{
+  z-index: 10;
+  border-top: 14px solid;
+  border-left: 24px solid #fff;
+  border-bottom: 14px solid;
+}
+
+.ws-play-btn span{
+  font-family: 'VitroPride';
+  display: block;
+  width: 16rem;
+  position: absolute;
+  font-size: 2.5rem;
+  top: 50%;
+  left: 60%;
+  transform: translateX(-50%) translateY(-50%);
+  color:#740;
+}
+.ws-play-btn span:hover{
+  color:#fff;
+}
+.ws-logo-btm{
+  position: fixed;
+  bottom: -7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  width: 16rem;
+  z-index: 20;
+  height: 20rem;
+  background-image: url(../img/logo1_w.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50%;
+}
+
+/* phase 2 bg-envelope */
+.container-bg2{
+  position: relative;
+}
+.ws-word-bg{
+  position: absolute;
+  top: 50%;
+left: 50%;
+transform: translateX(-50%) translateY(-50%);
+  background-image: url(../img/bg-envelope.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  width: 60%;
+  height: 80vh;
+}
+
+.ws-word-content {
+  position: absolute;
+  display: block;
+  background-image: url(../img/maple_title.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  top: 30%;
+  left: 50%; 
+  width: 28rem;
+  height: 28rem;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 10;
+}
+
+.ws-word-content.on{
+  z-index: 11;
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%; 
+  width: 28rem;
+  height: 28rem;
+  opacity : 0.7;
+  transform: translateX(-50%) translateY(-50%);
+  background-image: url(../img/bible_loading_gif.gif);
+  background-size: contain;
+  background-position: center center;
+  background-blend-mode:color-dodge;
+  transition:opacity 0.3s ease-in-out;
+}
+
+.ws-word-paragraph {
+  position: absolute;
+  top: 40%;
+  left: 50%; 
+  width: 25rem;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.ws-word-paragraph p{
+  font-family: 'Hakgyoansim BareondotumBold';
+  font-size: 2rem;
+}
+.ws-word-paragraph h3{ 
+  margin-top: 3rem;
+}
+.ws-back-btn-word { 
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10rem;
+  margin-top: 3rem;
+  height: 20em;
+  display: block;
+  animation: 1s 0.5s infinite ease-in-out both arrowdown;
+  cursor:pointer;
+  z-index: 10;
+  background-color: transparent;
+}
+
+.ws-back-btn-word span{
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 4rem;
+  font-size: 3rem;
+  height: 30rem;
+}
+.ws-back-btn{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10rem;
+  height: 10rem;
+  display: block;
+  background-color: #ccc;
+  clip-path: polygon(0% 0%, 50% 50%, 100% 0%, 100% 10%, 50% 60%, 0% 10%);
+
+}
+.ws-back-btn2{
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 9rem;
+  height: 9rem;
+  display: block;
+  background-color: #ddd;
+  clip-path: polygon(0% 0%, 50% 50%, 100% 0%, 100% 10%, 50% 60%, 0% 10%);
+}
+
+#draw-verse-btn {
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  bottom: 25%;
+  width: 18rem;
+  height: 5rem;
+  padding: 10px 20px;
+  background-color: #ddd;
+  color: #111;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+#draw-verse-btn:hover {
+  background-color: #aaa;
+}
+
+
+@keyframes arrowdown {
+0%{
+  bottom: 1rem;
+}
+100%{
+  bottom:0rem;
+}
+}
+@keyframes arrowdown2 {
+  0%{
+    bottom: 4rem;
+  }
+  100%{
+    bottom:3rem;
+  }
+  }
+
+
+  @media screen and (max-width: 480px){
+    .container-bg2{
+      position: relative;
+    }
+    .ws-word-bg{
+      position: absolute;
+      top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+      background-image: url(../img/bg-envelope.png);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      width: 100%;
+      height: 80vh;
+    }
+    .ws-word-paragraph {
+      position: absolute;
+      top: 25%;
+      left: 50%; 
+      width: 25rem;
+      text-align: center;
+      transform: translateX(-50%);
+    }
+    .ws-word-content {
+      position: absolute;
+      display: block;
+      background-image: url(../img/maple_title.png);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      top: 20%;
+      left: 50%; 
+      width: 25rem;
+      height: 25rem;
+      transform: translateX(-50%) translateY(-50%);
+      z-index: 10;
+    }
+    .ws-word-paragraph p{
+      font-family: 'Hakgyoansim BareondotumBold';
+      font-size: 2rem;
+    }
+    .ws-word-paragraph h3{ 
+      margin-top: 4rem;
+    }
+    .ws-back-btn-word { 
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10rem;
+      margin-top: 3rem;
+      height: 15rem;
+      display: block;
+      animation: 1s 0.5s infinite ease-in-out both arrowdown;
+      cursor:pointer;
+      z-index: 10;
+      background-color: transparent;
+    }
+    
+    .ws-back-btn-word span{
+      display: block;
+      text-align: center;
+      font-weight: bold;
+      margin-top: 4rem;
+      font-size: 3rem;
+      height: 20rem;
+    }
+    .ws-back-btn{
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 5rem;
+      height: 5rem;
+      display: block;
+      background-color: #ccc;
+      clip-path: polygon(0% 0%, 50% 50%, 100% 0%, 100% 10%, 50% 60%, 0% 10%);
+    
+    }
+    .ws-back-btn2{
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4.5rem;
+      height: 4.5rem;
+      display: block;
+      background-color: #ddd;
+      clip-path: polygon(0% 0%, 50% 50%, 100% 0%, 100% 10%, 50% 60%, 0% 10%);
+    }
+    #draw-verse-btn {
+      position: absolute;
+      right: 50%;
+      transform: translateX(50%);
+      bottom: 25%;
+      width: 12rem;
+      height: 3.2rem;
+      padding: 5px 10px;
+      background-color: #ddd;
+      color: #111;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+    
+    #draw-verse-btn:hover {
+      background-color: #aaa;
+    }
+    
+  }

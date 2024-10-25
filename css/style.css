@@ -15,7 +15,7 @@ body .pf-container {
   height: 0rem;
   margin: 0 auto;
   background-color: rgba(255, 255, 255, 0.7);
-  transition: all 0.3s ease-in-out;
+  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
   color: #000;
 
 }
@@ -32,7 +32,7 @@ body .pf-container {
   text-align: center;
   gap: 0 9rem;
   z-index: 999;
-  transition: height 0.1s ease-in-out, width 0.1s ease-in-out;
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 0), width 0.3s cubic-bezier(0.47, 0, 0.25, 0.0) ;
 }
 
 .pf-list-group li {
@@ -536,7 +536,7 @@ header .header-tit-img16 {
 .pf-portfolio {
   height: 100vh;
   width: 100%;
-  background: linear-gradient(135deg, rgba(255,204,204,0.7), rgba(255,205,205,0.3));
+  background: linear-gradient(180deg, rgba(255,255,255,1), rgba(255,204,204,0.7), rgba(255,205,205,0.3));
   position: relative;
 }
 
@@ -645,12 +645,12 @@ header .header-tit-img16 {
   transition: all 0.3s ease-in-out;
 }
 
-.pf-portfolio .pf-title-logo li.title-logo-1:hover,
+/* .pf-portfolio .pf-title-logo li.title-logo-1:hover,
 .pf-portfolio .pf-title-logo li.title-logo-2:hover,
 .pf-portfolio .pf-title-logo li.title-logo-3:hover,
 .pf-portfolio .pf-title-logo li.title-logo-4:hover {
   background-size: 75% 75%;
-}
+} */
 
 
 .video-points {
@@ -736,6 +736,7 @@ header .header-tit-img16 {
   transition: opacity 0.2s ease-in-out;
   max-width: 300px; /* 원하는 최대 너비를 설정 */
 }
+
 .tooltip-inner{
   font-size: 2rem;
   width: 30rem;
@@ -744,7 +745,21 @@ header .header-tit-img16 {
 }
 .tooltip-blog {
   position: relative;
+}
 
+.tooltip-blog::before {
+  content: '';
+  position: absolute;
+  top: -25%;right: -55rem ;
+  background-repeat: no-repeat;
+  background-image: url(../img/marketter-jisik.png);
+  background-position: center center;
+  background-size: cover;
+  transform: translateY(-50%);
+  width: 25rem;
+  height: 60vh;
+  opacity: 0;
+  transition : all 0.3s cubic-bezier(0.4, 0, 0.2, 0);
 }
 
 .tooltip-blog::after {
@@ -766,11 +781,55 @@ header .header-tit-img16 {
   width: 100%;
   transform-origin: center;
 }
+.tooltip-blog:hover::before {
+  opacity: 1;
+  transform-origin: center;
+}
+
+#portfolio-wrapper{
+  padding: 5rem 0;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: #000;
+  position: relative;
+}
 
 #portfolio{
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  margin-top: 5rem;
   margin-bottom: 5rem;
+}
+
+#portfolio .img-box{
+  box-shadow : 0px 0px 5px #000;
+  height: 50rem;
+  margin: 5rem 5rem;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 0);
+}
+
+#portfolio .img-box:hover{
+  transform: scale(1.05);
+}
+
+#portfolio .img-box .img-box-link{
+  line-height: 50rem;
+  display: block;
+  position: relative;
+}
+
+#portfolio .img-box-caption {
+  transform: translateX(-50%);
+  color : #000;
+  font-size: 3rem;
+}
+
+#portfolio .img-box img{
+  object-fit: contain;
+  width: 100%;
 }
 /* section - table */
 section#about {

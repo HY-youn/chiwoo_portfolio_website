@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>모멘텀 | 일정관리</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/font.css">
+  <link rel="stylesheet" href="./css/momentum.css">
+</head>
+<style>
+
+</style>
+
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <div class="momentum-title">
+        <h1>모멘텀 | 일정관리</h1>
+        <hr>
+      </div>
+      <div class="momentum-timer">
+        <h1>현재 시각은 <span class="clock-now"
+            onclick="openLinkInNewTab('https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EC%84%B8%EA%B3%84%EC%8B%9C%EA%B0%81')"></span>입니다.
+        </h1>
+      </div>
+
+
+      <main>
+        <section>
+          <h2>일정을 추가해주세요</h2>
+          <input type="text" name="할일 내용" id="todo-subject" placeholder="내용을 입력해주세요">
+
+          <button class="add-btn" onclick="addTodo();" type="button"><span><i class="fa fa-plus fa-1x"></i>추가</span></button>
+        </section>
+        <div class="schedule-box">
+          
+            <div class="todo-box">
+              <h3>할 일 목록</h3>
+              <ul class="todo-list">
+                <li class="todo-list-item"></li>
+              </ul>
+            </div>
+            <div class="done-box">
+              <h3>완료 목록</h3>
+              <ul class="done-list">
+                <li class="done-list-item"></li>
+              </ul>
+            </div>
+        </div>
+        <div class="delete-box">
+          <button class="del-box-btn" type="button" onclick="showDeletedItems()">삭제된 항목보기</button>
+          <ul class="del-box-list">
+
+          </ul>
+        </div>
+      </main>
+    </div>
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/gsap.js"></script>
+  <script src="https://kit.fontawesome.com/160fbbef25.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+
+  <script>
+    //  변수, 상수 입력
+    const todoBox = document.querySelector('.todo-box');
+    const doneBox = document.querySelector('.done-box');
+    const clock = document.querySelector('.clock-now');
+    const todolistItems = document.querySelectorAll('.todo-list li');
+
+
+    // 모든 li 태그를 받아온다
+    // function newRegister(){
+    // let newItem = document.createElement("li");
+    // const todoInput = document.querySelector('#todo-subject');
+    // let newText = document.createTextNode(todoInput.value);
+    // const todoList = document.querySelector('.todo-list');
+
+    // todolistItems.forEach((items)=>{
+    //   items.addEventListener("click", function(){
+    //     if(items.target.parentNode){
+    //       items.target.parentNode.removeChild(items);
+    //     }
+    //   })
+    // });
+
+    function addTodo(){
+      const inputTodo = document.querySelector('#todo-subject');  
+      const inputTxt = inputTodo.value.trim();
+
+      if(inputTxt) {
+      const item = createTodoItem(inputTxt);
+        document.querySelector('.todo-list').appendChild(item);
+        inputTodo.value ='';
+      }
+    }
+
+    function createTodoItem(inputTxt){
+      const item = document.createElement('li');
+      item.className = 'todo-list-item';
+      item.textContent = inputTxt;
+
+      const btnGroup = document.createElement('div');
+      btnGroup.className = 'btn-group';
+
+      const editBtn = createButton('수정', 'edit', ()=> editTodo(item));
+      const delBtn = createButton('삭제', 'del', ()=> delTodo(item));
+      const moveBtn = createButton('이동', 'move', ()=> moveTodo(item));
+
+      btnGroup.append(editBtn, delBtn, moveBtn);
+      item.append(btnGroup);
+
+      return item;
+    }
+
+    function createButton(txt, type, onClick){
+      const btn = document.createElement('button');
+      btn.className = `btn ${type}-btn`;
+      btn.textContent = txt;
+      btn.onclick = onClick;
+
+      return btn;
+    }
+
+    function editTodo(item){
+      const content = item.firstChild;
+      const btnGroup = item.querySelector('.btn-group');;
+      
+      const editContainer = document.createElement('li');
+      const txt = content.textContent;
+      content.className = 'todo-list-item';
+      
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.className = 'form-control';
+      input.value = txt;
+
+      const confirmBtn = createButton('확인', 'confirm', ()=>{
+        const newTxt = input.value.trim();
+        if(newTxt){
+          editContainer.textContent = newTxt;
+          item.replaceChild(editContainer, content);
+
+      
+        }
+      });
+
+      editContainer.append(input, confirmBtn);
+      btnGroup.style.display = 'none';
+      item.replaceChild(editContainer, content);
+      input.focus();
+    }
+    
+    function delTodo(item) {
+      const currentList = item.parentElement;
+            const content = item.firstChild;
+            const btnGroup = item.querySelector('.btn-group');
+            
+  
+            // 버튼 그룹 교체
+            const newBtnGroup = document.createElement('div');
+            newBtnGroup.className = 'btn-group';
+            const restoreBtn = createButton('복원', 'success', () => restoreTodo(item));
+            const delBtn = createButton('삭제', 'del', ()=> delTodo(item));
+            newBtnGroup.append(restoreBtn, delBtn);
+            
+            const targetList = ()=>{
+              if(currentList.classList.contains('del-box-list'))
+            {  targetList =  document.querySelector('del-box-list li');
+            targetList.removeChild(item);
+            }
+            else{
+            }
+          }
+          document.querySelector('.del-box-list').appendChild(item);
+          item.replaceChild(newBtnGroup, btnGroup);
+         
+
+        }
+        
+
+        function restoreTodo(item) {
+            const content = item.firstChild;
+            const btnGroup = item.querySelector('.btn-group');
+            
+            // 원래 버튼 그룹으로 복구
+            const newBtnGroup = document.createElement('div');
+            newBtnGroup.className = 'btn-group';
+            const editBtn = createButton('수정', 'edit', () => editTodo(item));
+            const delBtn = createButton('삭제', 'del', () => delTodo(item));
+            const moveBtn = createButton('이동', 'move', () => moveTodo(item));
+            newBtnGroup.append(editBtn, delBtn, moveBtn);
+            
+            item.replaceChild(newBtnGroup, btnGroup);
+            document.querySelector('.todo-list').appendChild(item);
+        }
+
+        function moveTodo(item) {
+            const currentList = item.parentElement;
+            const targetList = currentList.classList.contains('done-list')
+                ? document.querySelector('.todo-list') 
+                : document.querySelector('.done-list');
+            targetList.appendChild(item);
+        }
+
+        document.querySelector('#todo-subject').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addTodo();
+            }
+        });
+    // 이벤트 위임을 사용한 리스트 아이템 관리(주석처리)
+    // document.querySelector('#todo-subject').addEventListener('keyup', function (e) {
+    //   // Enter 키가 눌렸을 때 (keyCode 13)
+    //   if (e.key === 'Enter' || e.keyCode === 13) {
+    //     if (this.value.trim()) {  // 입력값이 있는 경우만 처리
+    //       // 새로운 리스트 아이템 생성
+    //       const todoList = document.querySelector('.todo-list');
+    //       const newItem = document.createElement('li');
+    //       newItem.textContent = this.value;
+    //       newItem.classList.add('todo-list-item');
+
+    //       // 리스트에 추가
+    //       todoList.appendChild(newItem);
+
+    //       // 입력 필드 초기화
+    //       this.value = '';
+
+    //       // 현재 모든 아이템의 인덱스 갱신
+    //       const items = Array.from(todoList.children);
+    //       console.log(`새 아이템이 추가됨. 현재 총 ${items.length}개의 아이템`);
+    //     }
+    //   }
+    // });
+
+    // // 리스트 아이템 삭제를 위한 이벤트 리스너 (클릭으로 삭제하는 기능 유지)
+    // document.querySelector('.todo-list').addEventListener('click', function (e) {
+    //   if (e.target.tagName.toLowerCase() === 'li') {
+    //     const items = Array.from(this.children);
+    //     const clickedIndex = items.indexOf(e.target);
+
+    //     console.log(`클릭된 아이템 인덱스: ${clickedIndex} 삭제됨`);
+    //     e.target.remove();
+    //   }
+    // });
+
+    // document.querySelector('.todo-list').addEventListener('', function (e) {
+    //   // 클릭된 요소가 li인 경우에만 처리
+    //   if (e.target.tagName.toLowerCase() === 'li') {
+    //     // 모든 리스트 아이템을 배열로 변환하여 인덱스 찾기
+    //     const items = Array.from(this.children);
+    //     const clickedIndex = items.indexOf(e.target);
+
+    //     console.log(`클릭된 아이템 인덱스: ${clickedIndex}`);
+    //     // 해당 아이템 삭제
+    //     e.target.remove();
+    //   }
+    // });
+
+
+    // function newRegister() {
+    //   const todoInput = document.querySelector('#todo-subject');
+    //   if (!todoInput.value.trim()) return; // 빈 입력 방지
+
+    //   const todoList = document.querySelector('.todo-list');
+    //   let newItem = document.createElement("li");
+    //   let newText = document.createTextNode(todoInput.value);
+
+    //   newItem.appendChild(newText);
+    //   newItem.classList.add("todo-list-item");
+
+    //   todoList.appendChild(newItem);
+    //   todoInput.value = '';
+    // }
+// 주석처리
+    setInterval(() => {
+      displayNow();
+    }, 1000);
+    function displayNow() {
+      let currentTime = new Date();
+      let hours = currentTime.getHours().toString().padStart(2, '0');
+      let minutes = currentTime.getMinutes().toString().padStart(2, '0');
+      let secs = currentTime.getSeconds().toString().padStart(2, '0');
+      let periods = hours;
+
+      // hours 는 오전 오후로 나눈다
+      if (hours >= 12) {
+        periods = "오후";
+      }
+      else {
+        periods = "오전";
+      }
+
+      hours = hours % 12;
+      hours = hours ? hours : 0;
+      let timeDisplay = `${periods} ${hours}:${minutes}:${secs}`;
+      clock.innerHTML = timeDisplay;
+    }
+
+
+    // 1. 기본적인 새 창 열기
+    window.open(document.location.href, '_blank');
+
+    // 2. 창 크기와 옵션을 지정하여 열기
+    window.open(document.location.href, '_blank', 'width=800,height=600');
+
+    // 3. 함수로 만들어 재사용하기
+    function openNewWindow(url, options = {}) {
+      const {
+        target = '_blank',
+        width = 800,
+        height = 600,
+        centered = true
+      } = options;
+
+      // 중앙 정렬을 위한 위치 계산
+      const left = centered ? (window.screen.width - width) / 2 : 0;
+      const top = centered ? (window.screen.height - height) / 2 : 0;
+
+      const windowFeatures = `
+        width=${width},
+        height=${height},
+        left=${left},
+        top=${top},
+        scrollbars=yes,
+        resizable=yes
+    `.replace(/\s/g, '');
+
+      window.open(url, target, windowFeatures);
+    }
+
+    // 사용 예시
+    openNewWindow(document.location.href);
+
+    // 사용자 정의 옵션으로 열기
+    openNewWindow(document.location.href, {
+      width: 1024,
+      height: 768,
+      centered: true
+    });
+
+    // 4. 앵커 태그를 활용한 방법
+    function openLinkInNewTab(url) {
+      const link = document.createElement('a');
+      link.href = url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+
+      // 앵커를 화면에서 숨기기
+      link.style.display = 'none';
+      document.body.appendChild(link);
+
+      // 클릭 이벤트 발생 및 정리
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // 사용 예시
+    openLinkInNewTab('https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EC%84%B8%EA%B3%84%EC%8B%9C%EA%B0%81');
+
+
+
+   
+  </script>
+</body>
+
+</html>

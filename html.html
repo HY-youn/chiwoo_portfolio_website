@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .section {
+      height: 100vh;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #000;
+      color: #fff;
+    }
+
+    .content {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .content.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .bg-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.9;
+      transform: scale(1.1);
+      transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1;
+    }
+
+    .section.active .bg-image {
+      transform: scale(1);
+    }
+
+    .title {
+      color: #fff;
+      font-size: 4rem;
+      z-index: 999;
+      margin-bottom: 1rem;
+      /* opacity: 1; */
+      display: block;
+      background-color: #fc0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+    }
+
+    .section.active .title {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .description {
+      font-size: 1.5rem;
+      max-width: 600px;
+      text-align: center;
+      /* opacity: 1; */
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
+    }
+
+    .section.active .description {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <section class="section">
+    <img src="" alt="Background" class="bg-image">
+    <div class="content">
+      <h1 class="title">Revolutionary Design</h1>
+      <p class="description">Experience the future of automotive excellence with our cutting-edge technology and innovative design philosophy.</p>
+    </div>
+  </section>
+  <section class="section">
+    <img src="./img/about-bg-texture.jpg" alt="Background" class="bg-image">
+    <div class="content">
+      <h1 class="title">Revolutionary Design</h1>
+      <p class="description">Experience the future of automotive excellence with our cutting-edge technology and innovative design philosophy.</p>
+    </div>
+  </section>
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        } else {
+          entry.target.classList.remove('active');
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    // 스크롤 시 패럴랙스 효과
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      document.querySelectorAll('.bg-image').forEach(image => {
+        const parent = image.closest('.section');
+        const parentTop = parent.offsetTop;
+        const speed = 0.5;
+        
+        if (scrolled > parentTop - window.innerHeight && 
+            scrolled < parentTop + parent.offsetHeight) {
+          image.style.transform = `scale(1.1) translateY(${(scrolled - parentTop) * speed}px)`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
