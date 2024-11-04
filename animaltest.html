@@ -181,13 +181,17 @@
                 cursor:pointer;
               }
           }
+          .imgFurry {
+            transition : all 0.5s ease-in-out;
+          }
     </style>
 </head>
 <body>
 <div class="main_container">
+  <h1>동물 성향 테스트(TEST. ver)</h1>
   <h1>이름을 입력해주세요</h1>
-  <form class="main_ctrl" id="nameForm">
-    <input type="text" id="nameInput" value="" placeholder="이름을 입력하세요">
+  <form class="main_ctrl" action="#" method="POST" id="nameForm">
+    <input type="text" id="nameInput" value="" placeholder="이름을 입력하세요" required>
     <input type="button" id="startButton" value="시작하기">
   </form>
 </div>
@@ -198,7 +202,7 @@
 
 <form id="quizForm" action="https://formspree.io/f/xdkoejey"
 method="POST">
-  
+
 </form>
 
 <div class="pagination">
@@ -208,7 +212,8 @@ method="POST">
 
 <h3>결과창</h3>
 <div class="results hidden" id="results">
-  
+  <img  class="imgFurry" src="" alt="" width="500">
+  <input type="hidden" id="hiddenNameInput" name="name">  
 </div>
 
 <script>
@@ -225,8 +230,13 @@ document.getElementById('nameInput').addEventListener('keypress', function(event
     }
     event.preventDefault();
     console.log(event.which);
+
+    const name = document.getElementById('nameInput').value;
+    const saveName = document.getElementById('hiddenNameInput');
+    saveName.value = name;
 });
 // 화면을 숨기는 함수
+
 
 
 const questions = [
@@ -409,6 +419,7 @@ function sendResults() {
         const resultsDiv = document.getElementById('results');
         const resultsText = resultsDiv.innerHTML;
 
+
         const formData = new FormData();
         formData.append('results', resultsText); // 결과 내용을 'results' 필드로 전송
 
@@ -433,6 +444,39 @@ function sendResults() {
     }
 
 loadQuestions(currentQuestionIndex);
+
+// setInterval img change
+const imgFurry = document.querySelector('.imgFurry');
+const imgFurryArr = [
+    "./img/furry/dolphin.jpg",
+    "./img/furry/beaver.jpg",
+    "./img/furry/eagle.jpg",
+    "./img/furry/fox.jpg",
+    "./img/furry/turtle.jpg",
+    "./img/furry/wolf.jpg",
+];
+let currentIndex = 0;
+
+
+// 처음 이미지를 생성해야 함
+function initImages(){
+  imgFurry.setAttribute('src', imgFurryArr[currentIndex]);
+  imgFurry.style.opacity = 1;
+}
+function changeImages(){
+  imgFurry.style.opacity = 0; // 현재 이미지의 opacity를 0으로 설정
+        setTimeout(() => {
+          currentIndex = (currentIndex + 1) % imgFurryArr.length;
+            imgFurry.setAttribute('src', imgFurryArr[currentIndex]); // 이미지 소스 변경
+            imgFurry.style.opacity = 1; // opacity를 1로 설정
+        }, 500); // 150ms 후에 소스 변경
+    
+  };
+
+
+initImages();
+setInterval(changeImages, imgFurryArr.length * 3000);
+
 </script>
 </body>
 </html>
