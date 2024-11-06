@@ -14,52 +14,59 @@ document.addEventListener("DOMContentLoaded", (event) => {
   // let fadeInOutImg = gsap.timeline();
 
   fadeInOut
-    .from('header .header-title1', {
+  .from('header .header-title1 .header-tit-img1', {
+    opacity: 0,
+    duration: 8,
+  },)
+    .from('header .header-title1 > h3', {
       opacity: 0,
-      duration: 5,
+      duration: 8,
     }, ">3")
     .to('header .header-title1', {
       autoAlpha: 0,
       x: 500,
       duration: 2
     }, ">2")
+    .from('header .header-title2 .header-tit-img2', {
+      opacity: 0,
+      duration: 8,
+    },)
+      .from('header .header-title2 > h3', {
+        opacity: 0,
+        duration: 8,
+      }, ">3")
     .to('.header-title2', {
-      opacity: 1,
-      duration: 5,
-    }, "<2")
-    .to('.header-title2', {
-      autoAlpha: 0,
-      x: 500,
-      duration: 5,
-    }, "<5")
-    .to('.header-title3', {
-      opacity: 1,
-      duration: 10,
-    }, ">-4")
-    .to('.header-title3', {
-      opacity :1,
-      duration: 5,
-    })
-    .to('.header-title3', {
-      opacity :0,
-      x:500,
+      autoAlpha:0,
       duration: 2,
-    })
+    }, ">2")
+    .from('header .header-title3 .header-tit-img22', {
+      opacity: 0,
+      duration: 8,
+    },)
+      .from('header .header-title3 > h3', {
+        opacity: 0,
+        duration: 8,
+      }, ">3")
+    .to('.header-title3', {
+      autoAlpha : 0,
+      duration: 2,
+    }, ">2")
+    .from('header .header-title4 .header-tit-img1', {
+      opacity: 0,
+      duration: 8,
+    },)
+      .from('header .header-title4 > h3', {
+        opacity: 0,
+        duration: 8,
+      }, ">3")
     .to('.header-title4', {
-      opacity: 1,
-      duration: 5,
-    }, "<-0.5")
-    .to('.header-title4', {
-      autoAlpha: 0,
-    })
+      autoAlpha : 0,
+      duration: 2,
+    }, ">2")
     .to('.header-title5', {
       opacity: 1,
       duration: 15,
     }, ">-1")
-    .to('.header-title5', {
-      
-      duration : 5,
-    }, ">1")
     .to('.header-title5', {
       x : 500,
       autoAlpha: 0,
@@ -71,61 +78,84 @@ document.addEventListener("DOMContentLoaded", (event) => {
     })
     .to('.header-title6', {
       autoAlpha: 0,
+      duration:5,
     })
     .to('.header-title7', {
       opacity: 1,
+      duration: 14,
+    })
+    .to('.header-title7', {
+      autoAlpha: 0,
+      duration : 7,
+    }, ">3")
+    .to('.header-title8', {
+      opacity: 1,
+      duration: 14,
+    })
+    .to('.header-title8', {
+      autoAlpha: 0,
+      duration:7,
+    }, ">3")
+    .from('.header-title9 .header-tit-img3',{
+      opacity: 0,
+      duration :7,
+    })
+    .from('.header-title9 .header-tit-img4',{
+      opacity: 0,
+      duration :7,
+    }, ">-7")
+    .from('.header-title9 h3', {
+      opacity: 0,
       duration: 7,
-    })
-    .to('.header-title7', {
-      autoAlpha: 0,
-      x:500,
-      duration : 2,
     }, ">3")
-    .to('.header-title8', {
-      opacity: 1,
-      duration: 5,
-    })
-    .to('.header-title8', {
-      x: 500,
-      autoAlpha: 0,
-    }, ">3")
-    .to('.header-title9', {
-      opacity: 1,
-      duration: 5,
-    })
     .to('.header-title9', {
       x :500,
       autoAlpha: 0,
-    }, ">3")
+      duration:7,
+    }, )
     .to('.header-title10', {
       opacity: 1,
-      duration: 2,
+      duration: 14,
     })
     .to('.header-title10', {
       autoAlpha: 0,
-      x: 500,
-    }, ">3")
+      y: -500,
+      duration: 7,
+    }, ">-3")
     .to('.header-title11', {
       opacity: 1,
-      duration: 5,
+      duration: 14,
     })
     .to('.header-title11', {
       autoAlpha: 0,
-      x: 500,
-    }, ">3")
+      duration:7,
+    }, ">-3")
     .to('.header-title12', {
       opacity: 1,
-      duration: 5,
+      duration: 14,
     })
     .to('.header-title12', {
       autoAlpha: 0,
+      duration: 10,
+      y:500,
     })
-    .to('.header-title13', {
-      opacity: 1,
-      duration: 5,
-    }, "<4")
-    .to('.header-title13', {
-    },)
+    .from('.header-title13 h3', {
+      opacity: 0,
+      duration: 14,
+    })
+    .from('.header-title13 .header-tit-img5', {
+      opacity:0,
+      duration:14
+    }, "<-20")
+    .from('.header-title13 .header-tit-img6', {
+      opacity:0,
+      duration:16
+    }, ">-2")
+    .from('.header-title13 .header-tit-img7', {
+      opacity:0,
+      duration:16
+    }, ">-2")
+
 
   // fadeInOutImg.from('.header-tit-img1', {
   //   opacity: 0,
@@ -238,6 +268,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   //     autoAlpha: 0,
   //   })
 
+  if (window.innerWidth >= 554){
   ScrollTrigger.create({
     animation: fadeInOut,
     trigger: 'header .header-panel',
@@ -261,6 +292,23 @@ document.addEventListener("DOMContentLoaded", (event) => {
   //   toggleActions: "play none resume none",
   //   id: "title-img"
   // })
+}
+else {
+  ScrollTrigger.create({
+    animation: fadeInOut,
+    trigger: 'header .header-panel',
+    start: '0% top',
+    end: '0',
+    pin: false,
+    scrub: false,
+    // markers: true,
+    toggleActions: "play none resume none",
+    id: "title1"
+  
+})
+}
+
+
 
 ScrollTrigger.create({
     trigger: 'section .about-me',

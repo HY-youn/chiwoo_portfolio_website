@@ -55,6 +55,7 @@
             <h3>AI를 통한 마케팅이<br>대두되는 요즘</h3>
           </div>
           <div class="txt-panel header-title4">
+            <img class="header-tit-img1" src="./img/reuse.png" alt="">
             <h3>사람은 대체되기<br>쉬운 것이 현실입니다</h3>
           </div>
           <div class="txt-panel header-title5">
@@ -86,6 +87,9 @@
             <h3>뼈 묻을 각오로 일합니다</h3>
           </div>
           <div class="txt-panel header-title13">
+            <img class="header-tit-img5" src="./img/feet_print.png" alt="">
+            <img class="header-tit-img6" src="./img/feet_print.png" alt="">
+            <img class="header-tit-img7" src="./img/feet_print.png" alt="">
             <h3>열심히 발로 뛰겠습니다</h3>
           </div>
         </div>
@@ -115,7 +119,7 @@
         </div> -->
       </div>
     </header>
-    <div class="pf-summary-title" id="stats">
+    <div class="pf-summary-title sec-stats" id="stats">
       <div class="container">
         <div class="row g-5">
           <div class="col-md-4 col-sm-6 col-lg-3">
@@ -498,42 +502,41 @@
     <script>
 
 
-      function incrementStats() {
-        const counters = document.querySelectorAll('.counter');
+function incrementStats() {
+  const counters = document.querySelectorAll('.counter');
 
-        counters.forEach((counter) => {
-          counter.innerText = 0;
+  counters.forEach((counter) => {
+    counter.innerText = 0;
 
-          const updateCounter = () => {
-            const target = counter.getAttribute('data-target');
-            const c = +counter.innerText;
+    const updateCounter = () => {
+      const target = counter.getAttribute('data-target');
+      const c = +counter.innerText;
 
-            const increment = target / 200;
+      const increment = target / 1000;
 
-            if (c < target) {
-              counter.innerText = Math.ceil(c + increment);
-              setTimeout(updateCounter, 1);
-            }
-            else {
-              counter.innerText = target;
-            }
-          }
-          updateCounter();
-        });
+      if (c < target) {
+        counter.innerText = Math.ceil(c + increment);
+        setTimeout(updateCounter, 250);
+      } else {
+        counter.innerText = target;
       }
-      const statThreshold = document.querySelector('.sec-stats');
+    }
+    updateCounter();
+  });
+}
 
-      const checkisVisible = (e) => {
-        const rect = e.getBoundingClientRect();
-        if (rect.bottom <= window.innerHeight) {
-          document.addEventListener('DOMContentLoaded', incrementStats);
-          console.log("your are scrolled")
-        }
-      }
-      document.addEventListener('scroll', () => {
-        checkisVisible(statThreshold);
-      })
+const statThreshold = document.querySelector('.sec-stats');
 
+const checkIsVisible = () => {
+  const rect = statThreshold.getBoundingClientRect();
+  if (rect.top < window.innerHeight && rect.bottom >= 0) {
+    incrementStats(); // 조건이 만족되면 incrementStats 호출
+    
+    document.removeEventListener('scroll', checkIsVisible);
+  }
+}
+
+document.addEventListener('scroll', checkIsVisible);
 
       // 
       function runTypingEffect() {
@@ -655,7 +658,7 @@
       const pfHeaderList = document.querySelector('.pf-list-group');
       const $swiperImage = $('.swiper-slide');
       const $arrayImage = $swiperImage.find('img');
-      const headerImgBox = document.querySelector('.header-img-panel-box');
+      // const headerImgBox = document.querySelector('.header-img-panel-box');
 
 
 
@@ -665,7 +668,7 @@
           pfHeaderList.classList.add('on');
           headerLine.style.height = "10rem";
           if (scrollY > 150) {
-            headerImgBox.style.opacity = 1;
+            // headerImgBox.style.opacity = 1;
           }
         }
 
@@ -674,7 +677,7 @@
           pfHeaderList.classList.remove('on');
           headerLine.style.height = "0";
           headerLine.style.backgroundColor = "rgba(255, 255, 255, 0.7)"
-          headerImgBox.style.opacity = 0;
+          // headerImgBox.style.opacity = 0;
         }
       })
 
