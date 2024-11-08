@@ -1,3 +1,8 @@
+:root {
+  --bgprimary-color : rgba(255,150,0, 0.7);
+  --bgsecondary-color : rgba(30,70,40, 0.7);
+}
+
 body {
   width: 100%;
   background-image: url(../img/momentum-bg1.png);
@@ -68,7 +73,7 @@ body {
 & h3{
   text-indent: 2rem;
   font-size: 3rem;
-  text-decoration: underline;
+  
 
   margin: 0 1rem;
 }
@@ -76,7 +81,10 @@ body {
     border: 5px solid #000;
     padding: 2rem 0;
     
-    background-color: #fc0;
+    background-color: var(--bgprimary-color);
+    & h3{
+      color : #fff;
+    }
     & li {
       font-size: 2.3rem;
       /* border: 1px solid #000; */
@@ -95,7 +103,7 @@ body {
   & .done-box {
     border: 5px solid #000;
     padding: 5rem 0;
-    background-color: rgb(8, 102, 47);
+    background-color: var(--bgsecondary-color);
   }
 }
 
@@ -108,7 +116,7 @@ body {
 & h3{
   text-indent: 2rem;
   font-size: 3rem;
-  text-decoration: underline;
+  
 
   margin: 0 1rem;
 }
@@ -116,9 +124,9 @@ body {
     border: 5px solid #000;
     padding: 2rem 0;
 
-    background-color: rgb(8, 102, 47);
+    background-color: var(--bgsecondary-color);
     & h3{
-      color: #aaa;
+      color: #fc0;
     }
     & li {
       font-size: 2.3rem;
@@ -333,21 +341,25 @@ transform: translateY(-50%);
 
   .schedule-box {
     /* border: 1px solid #000; */
-    margin: 3rem 3rem;
+    margin: 2rem 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0 2rem;
   & h3{
     text-indent: 2rem;
     font-size: 2rem;
-    text-decoration: underline;
+    
   
     margin: 0 1rem;
   }
     & .todo-box {
       border: 5px solid #000;
       padding: 2rem 0;
-      background-color: #fc0;
+      border-radius: 50rem;
+      background-color: var(--bgprimary-color);
+      & h3{
+        color : #fff;
+      }
       & li {
         font-size: 2.3rem;
         /* border: 1px solid #000; */
@@ -379,7 +391,7 @@ transform: translateY(-50%);
   & h3{
     text-indent: 2rem;
     font-size: 2rem;
-    text-decoration: underline;
+    
   
     margin: 0 1rem;
   }

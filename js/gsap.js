@@ -268,7 +268,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   //     autoAlpha: 0,
   //   })
 
-  if (window.innerWidth >= 554){
+  if (window.outerWidth > 554 && window.innerWidth > 554){
   ScrollTrigger.create({
     animation: fadeInOut,
     trigger: 'header .header-panel',
@@ -296,15 +296,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
 else {
   ScrollTrigger.create({
     animation: fadeInOut,
-    trigger: 'header .header-panel',
+    trigger: 'header',
     start: '0% top',
     end: '0',
     pin: false,
     scrub: false,
     // markers: true,
-    toggleActions: "play none resume none",
+    toggleActions: "none none none none",
     id: "title1"
-  
 })
 }
 

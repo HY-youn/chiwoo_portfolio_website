@@ -36,22 +36,23 @@
           <h2>일정을 추가해주세요</h2>
           <input type="text" name="할일 내용" id="todo-subject" placeholder="내용을 입력해주세요">
 
-          <button class="add-btn" onclick="addTodo();" type="button"><span><i class="fa fa-plus fa-1x"></i>추가</span></button>
+          <button class="add-btn" onclick="addTodo();" type="button"><span><i
+                class="fa fa-plus fa-1x"></i>추가</span></button>
         </section>
         <div class="schedule-box">
-          
-            <div class="todo-box">
-              <h3>할 일 목록</h3>
-              <ul class="todo-list">
-                <li class="todo-list-item"></li>
-              </ul>
-            </div>
-            <div class="done-box">
-              <h3>완료 목록</h3>
-              <ul class="done-list">
-                <li class="done-list-item"></li>
-              </ul>
-            </div>
+
+          <div class="todo-box">
+            <h3>할 일 목록</h3>
+            <ul class="todo-list">
+              <li class="todo-list-item"></li>
+            </ul>
+          </div>
+          <div class="done-box">
+            <h3>완료 목록</h3>
+            <ul class="done-list">
+              <li class="done-list-item"></li>
+            </ul>
+          </div>
         </div>
         <div class="delete-box">
           <button class="del-box-btn" type="button" onclick="showDeletedItems()">삭제된 항목보기</button>
@@ -98,18 +99,18 @@
     //   })
     // });
 
-    function addTodo(){
-      const inputTodo = document.querySelector('#todo-subject');  
+    function addTodo() {
+      const inputTodo = document.querySelector('#todo-subject');
       const inputTxt = inputTodo.value.trim();
 
-      if(inputTxt) {
-      const item = createTodoItem(inputTxt);
+      if (inputTxt) {
+        const { item } = createTodoItem(inputTxt);
         document.querySelector('.todo-list').appendChild(item);
-        inputTodo.value ='';
+        inputTodo.value = '';
       }
     }
 
-    function createTodoItem(inputTxt){
+    function createTodoItem(inputTxt) {
       const item = document.createElement('li');
       item.className = 'todo-list-item';
       item.textContent = inputTxt;
@@ -117,111 +118,178 @@
       const btnGroup = document.createElement('div');
       btnGroup.className = 'btn-group';
 
-      const editBtn = createButton('수정', 'edit', ()=> editTodo(item));
-      const delBtn = createButton('삭제', 'del', ()=> delTodo(item));
-      const moveBtn = createButton('이동', 'move', ()=> moveTodo(item));
+      const delBtn = createButton('삭제', 'del', () => delTodo(item));
 
-      btnGroup.append(editBtn, delBtn, moveBtn);
-      item.append(btnGroup);
+      // moveBtn 생성 여부 결정
+      const todoList = document.querySelector('.todo-list');
+      let moveBtn = null;
+      let editBtn = null;
+      if (todoList && todoList.classList.contains('todo-list')) {
+        editBtn = createButton('수정', 'edit', () => editTodo(item));
+        moveBtn = createButton('이동', 'move', () => moveTodo(item));
+        btnGroup.appendChild(moveBtn); // btnGroup에 moveBtn 추가
+        btnGroup.appendChild(editBtn);
+      }
 
-      return item;
+      // 버튼 그룹에 editBtn과 delBtn 추가
+      btnGroup.append(delBtn);
+
+      // item에 btnGroup 추가
+      item.appendChild(btnGroup);
+
+      return { item, moveBtn, editBtn }; // 생성된 item 반환
     }
 
-    function createButton(txt, type, onClick){
-      const btn = document.createElement('button');
-      btn.className = `btn ${type}-btn`;
-      btn.textContent = txt;
-      btn.onclick = onClick;
+    // function editTodo(item){
+    //   const content = item.firstChild;
+    //   
+    //   // 생성되기 전 li 즉 li.list-group-item 임
+    //   const btnGroup = item.querySelector('.btn-group');
 
-      return btn;
+    //   const editContainer = document.createElement('li');
+    //   
+    //   // 수정되고 있는 항목
+    //   const txt = content.textContent;
+    //   editContainer.className = 'todo-list-item';
+    //   // 생성된 li에 스타일을 적용하기 위함
+
+    //   const editInput = document.createElement('input');
+    //   editInput.type = 'text';
+    //   editInput.className = 'form-control';
+    //   editInput.value = txt;
+
+    //   const confirmBtn = createButton('확인', 'confirm', ()=>{
+    //     const newTxt = editInput.value.trim();
+    //     //  이름이 confirm-btn 이 생성이 됨
+    //     if(newTxt != null){
+    //       item.textContent = newTxt;
+    //       
+
+    //       // editContainer.appendChild(btnGroup);
+    //       // content.appendChild(btnGroup);
+    //       
+    //     }else{
+    //       return false;
+    //     }
+    //   });
+    //   editContainer.append(editInput, confirmBtn);
+    //   btnGroup.style.display = 'none';
+    //   item.replaceChild(editContainer, content);
+    //   // 생성된 li가 사라지고 li로 바뀝니다.
+
+    // }
+    function createButton(text, className, onClick) {
+      const button = document.createElement('button'); // 버튼 요소 생성
+      button.textContent = text; // 버튼 텍스트 설정
+      button.className = `btn ${className}-btn`; // 버튼 클래스 설정
+      button.onclick = onClick; // 클릭 이벤트 핸들러 설정
+      return button; // 생성된 버튼 반환
     }
-
-    function editTodo(item){
+    function editTodo(item) {
       const content = item.firstChild;
-      const btnGroup = item.querySelector('.btn-group');;
-      
+      const btnGroup = item.querySelector('.btn-group');
       const editContainer = document.createElement('li');
       const txt = content.textContent;
-      content.className = 'todo-list-item';
-      
-      const input = document.createElement('input');
-      input.type = 'text';
-      input.className = 'form-control';
-      input.value = txt;
 
-      const confirmBtn = createButton('확인', 'confirm', ()=>{
-        const newTxt = input.value.trim();
-        if(newTxt){
-          editContainer.textContent = newTxt;
-          item.replaceChild(editContainer, content);
+      // '수정' 버튼 비활성화 체크
+      const editBtn = btnGroup.querySelector('.edit-btn');
+      if (editBtn && editBtn.disabled) {
+        return; // 비활성화된 경우 함수 종료
+      }
+      editContainer.className = 'todo-list-item';
 
-      
+      const editInput = document.createElement('input');
+      editInput.type = 'text';
+      editInput.className = 'form-control';
+      editInput.value = txt;
+
+      const confirmBtn = createButton('확인', 'confirm', () => {
+        const newTxt = editInput.value.trim();
+
+        if (newTxt) {
+          // item의 텍스트를 업데이트
+          content.textContent = newTxt; // content를 직접 수정
+
+
+          // btnGroup을 다시 보여줍니다.
+          btnGroup.style.display = 'block';
+
+          // editContainer를 제거하고 원래의 item을 복원
+          item.replaceChild(content, editContainer); // editContainer를 content로 교체
+        } else {
+          return false;
         }
       });
 
-      editContainer.append(input, confirmBtn);
-      btnGroup.style.display = 'none';
-      item.replaceChild(editContainer, content);
-      input.focus();
+      editContainer.append(editInput, confirmBtn);
+      btnGroup.style.display = 'none'; // btnGroup 숨기기
+      item.replaceChild(editContainer, content); // 기존 content를 editContainer로 교체
+
+
     }
-    
+
+
+
     function delTodo(item) {
       const currentList = item.parentElement;
-            const content = item.firstChild;
-            const btnGroup = item.querySelector('.btn-group');
-            
-  
-            // 버튼 그룹 교체
-            const newBtnGroup = document.createElement('div');
-            newBtnGroup.className = 'btn-group';
-            const restoreBtn = createButton('복원', 'success', () => restoreTodo(item));
-            const delBtn = createButton('삭제', 'del', ()=> delTodo(item));
-            newBtnGroup.append(restoreBtn, delBtn);
-            
-            const targetList = ()=>{
-              if(currentList.classList.contains('del-box-list'))
-            {  targetList =  document.querySelector('del-box-list li');
-            targetList.removeChild(item);
-            }
-            else{
-            }
-          }
-          document.querySelector('.del-box-list').appendChild(item);
-          item.replaceChild(newBtnGroup, btnGroup);
-         
+      const btnGroup = item.querySelector('.btn-group');
 
+
+      // 버튼 그룹 교체
+      const newBtnGroup = document.createElement('div');
+      newBtnGroup.className = 'btn-group';
+      const restoreBtn = createButton('복원', 'success', () => restoreTodo(item));
+      const delBtn = createButton('삭제', 'del', () => delTodo(item));
+      newBtnGroup.append(restoreBtn, delBtn);
+
+        if (currentList.classList.contains('del-box-list')) {
+          while (currentList.firstChild) {
+      currentList.removeChild(currentList.firstChild); // 모든 자식 노드 제거
+    }
+        return;
+      }
+    
+      document.querySelector('.del-box-list').appendChild(item);
+      item.replaceChild(newBtnGroup, btnGroup);
+
+
+    }
+
+
+    function restoreTodo(item) {
+      const btnGroup = item.querySelector('.btn-group');
+
+      // 원래 버튼 그룹으로 복구
+      const newBtnGroup = document.createElement('div');
+      newBtnGroup.className = 'btn-group';
+      const editBtn = createButton('수정', 'edit', () => editTodo(item));
+      const delBtn = createButton('삭제', 'del', () => delTodo(item));
+      const moveBtn = createButton('이동', 'move', () => moveTodo(item));
+      newBtnGroup.append(moveBtn, editBtn, delBtn);
+
+      item.replaceChild(newBtnGroup, btnGroup);
+      document.querySelector('.todo-list').appendChild(item);
+    }
+
+    function moveTodo(item) {
+      const doneList = document.querySelector('.done-list');
+      if (doneList) {
+        doneList.appendChild(item); // done-list로 항목 이동
+
+        const editBtn = item.querySelector('.btn-group .edit-btn');
+        const moveBtn = item.querySelector('.btn-group .move-btn'); // moveBtn 선택
+        if (moveBtn || editBtn) {
+          moveBtn.remove();
+          editBtn.remove();
         }
-        
+      }
+    }
 
-        function restoreTodo(item) {
-            const content = item.firstChild;
-            const btnGroup = item.querySelector('.btn-group');
-            
-            // 원래 버튼 그룹으로 복구
-            const newBtnGroup = document.createElement('div');
-            newBtnGroup.className = 'btn-group';
-            const editBtn = createButton('수정', 'edit', () => editTodo(item));
-            const delBtn = createButton('삭제', 'del', () => delTodo(item));
-            const moveBtn = createButton('이동', 'move', () => moveTodo(item));
-            newBtnGroup.append(editBtn, delBtn, moveBtn);
-            
-            item.replaceChild(newBtnGroup, btnGroup);
-            document.querySelector('.todo-list').appendChild(item);
-        }
-
-        function moveTodo(item) {
-            const currentList = item.parentElement;
-            const targetList = currentList.classList.contains('done-list')
-                ? document.querySelector('.todo-list') 
-                : document.querySelector('.done-list');
-            targetList.appendChild(item);
-        }
-
-        document.querySelector('#todo-subject').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                addTodo();
-            }
-        });
+    document.querySelector('#todo-subject').addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        addTodo();
+      }
+    });
     // 이벤트 위임을 사용한 리스트 아이템 관리(주석처리)
     // document.querySelector('#todo-subject').addEventListener('keyup', function (e) {
     //   // Enter 키가 눌렸을 때 (keyCode 13)
@@ -241,7 +309,7 @@
 
     //       // 현재 모든 아이템의 인덱스 갱신
     //       const items = Array.from(todoList.children);
-    //       console.log(`새 아이템이 추가됨. 현재 총 ${items.length}개의 아이템`);
+    //       
     //     }
     //   }
     // });
@@ -252,7 +320,7 @@
     //     const items = Array.from(this.children);
     //     const clickedIndex = items.indexOf(e.target);
 
-    //     console.log(`클릭된 아이템 인덱스: ${clickedIndex} 삭제됨`);
+    //     
     //     e.target.remove();
     //   }
     // });
@@ -264,7 +332,7 @@
     //     const items = Array.from(this.children);
     //     const clickedIndex = items.indexOf(e.target);
 
-    //     console.log(`클릭된 아이템 인덱스: ${clickedIndex}`);
+    //     
     //     // 해당 아이템 삭제
     //     e.target.remove();
     //   }
@@ -285,7 +353,7 @@
     //   todoList.appendChild(newItem);
     //   todoInput.value = '';
     // }
-// 주석처리
+    // 주석처리
     setInterval(() => {
       displayNow();
     }, 1000);
@@ -318,6 +386,8 @@
     window.open(document.location.href, '_blank', 'width=800,height=600');
 
     // 3. 함수로 만들어 재사용하기
+    //  const obj = { a: 1, b: 2};
+    // const { a, b} = obj;  이를 구조분해 할당이라 불림 
     function openNewWindow(url, options = {}) {
       const {
         target = '_blank',
@@ -342,8 +412,8 @@
       window.open(url, target, windowFeatures);
     }
 
-    // 사용 예시
-    openNewWindow(document.location.href);
+    // // 사용 예시
+    // openNewWindow(document.location.href);
 
     // 사용자 정의 옵션으로 열기
     openNewWindow(document.location.href, {
@@ -373,7 +443,7 @@
 
 
 
-   
+
   </script>
 </body>
 
