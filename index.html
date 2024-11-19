@@ -17,6 +17,7 @@
   <style>
 
   </style>
+     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a97833085c47004ea20732c014414a7b"></script>
 </head>
 
 <body>
@@ -392,19 +393,27 @@ IP주소, 쿠키, MAC주소, 서비스 이용기록, 방문기록, 불량 이용
     <footer>
       <div class="footer-container">
         <div class="footer-address">
-          <p>찾아오시는 길</p>
-          <div class="kakaomap-api"></div>
+          <div class="kakaomap-container">
+            <p>찾아오시는 길</p>
+            <div id="map">
+            </div>
+              <div class="address-info">
+                <h4>치우치과의원</h4>
+                <p>광주광역시 북구 두암동 561-5 치우빌딩 2층</p>
+                <p>Tel: 062-123-4567</p>
+                <button onclick="findWay()">오시는 길</button>
+              </div>
+          </div>
+          <div class="dental_schedule">
+            <p>진료시간 안내</p>
+            <p>월요일 09:00 ~ 18:00</p>
+            <p>화요일 09:00 ~ 18:00</p>
+            <p>수요일 09:00 ~ 18:00</p>
+            <p>목요일 09:00 ~ 18:00</p>
+            <p>금요일 09:00 ~ 18:00</p>
+            <p>토요일 09:00 ~ 18:00</p>
+          </div>
         </div>
-        <div class="footer-logo">
-          <div class="footer-logo-img"><a
-              href="https://www.youtube.com/@%EA%B3%B5%EC%9D%B8%ED%95%98%EB%8A%94%EB%8F%99%EB%8F%99"
-              target="_blank"><img src="./img/icon/youtube-brands-solid.png" alt=""></a></div>
-          <div class="footer-logo-img"><a href="https://www.instagram.com/pd_hdyoun_" target="_blank"><img
-                src="./img/icon/instagram-brands-solid.png" alt=""></a></div>
-          <div class="footer-logo-img"><a href="https://blog.naver.com/zkade" target="_blank"><img
-                src="./img/icon/n-solid.png" alt=""></a></div>
-        </div>
-        <h3>Copyright All Rights Reserved <span>ⓒ 현동</span></h3>
       </div>
     </footer>
     <!-- Whole container end -->
@@ -416,7 +425,52 @@ IP주소, 쿠키, MAC주소, 서비스 이용기록, 방문기록, 불량 이용
       integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+ 
     <script>
+      // kakaomap API//
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(35.1744, 126.9115), // 치우치과 위치의 위도, 경도로 수정
+        level: 3 // 지도의 확대 레벨
+    };
+
+// 지도를 표시할 div와 지도 옵션으로 지도를 생성합니다
+var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+// 마커가 표시될 위치입니다 
+var markerPosition  = new kakao.maps.LatLng(35.1744, 126.9115); // 치우치과 위치로 수정
+
+// 마커를 생성합니다
+var marker = new kakao.maps.Marker({
+    position: markerPosition
+});
+
+// 마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);
+
+// 커스텀 오버레이에 표출될 내용
+var content = `
+    <div class="customoverlay">
+        <a href="https://map.kakao.com/link/map/치우치과의원,35.1744,126.9115" target="_blank">
+            <span class="title">치우치과의원</span>
+        </a>
+    </div>
+`;
+
+// 커스텀 오버레이를 생성합니다
+var customOverlay = new kakao.maps.CustomOverlay({
+    map: map,
+    position: markerPosition,
+    content: content,
+    yAnchor: 1 
+});
+
+// 길찾기 함수
+function findWay() {
+    window.open('https://map.kakao.com/link/to/치우치과의원,35.1744,126.9115');
+}
+    
+
       class NavbarController {
         constructor() {
           this.navItems = document.querySelectorAll('.cw-navbar-item');
