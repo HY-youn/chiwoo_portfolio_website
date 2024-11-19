@@ -1,192 +1,643 @@
 @charset 'UTF-8';
 
-body .pf-container {
+body .cw-container {
   position: relative;
   width: 100%;
-
 }
-
-.headerline {
+header {
   z-index: 999;
+width: 100%;
   position: fixed;
-  top: 0;
-  left: 0;
+}
+/* navbar- style  */
+
+.cw-container .doc-bar{
   width: 100%;
-  height: 0rem;
   margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.7);
-  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  padding: 1rem 0;
+  background-color: #eee;
+}
+
+.doc-bar-inner{
+  width: 160rem;
+  margin: 0 auto;
+}
+.doc-bar .right-area{
+  background-color: #fc0; 
+}
+.doc-bar .logo-img{
+  width: 15rem;
+}
+.sns-icon{ 
+  width: 2.8rem;
+  height: 2.8rem;
+  vertical-align: top;
+}
+
+.login-bar li a {
+  font-size: 2rem;
   color: #000;
 }
 
-.pf-title-text{
-  position: absolute;
-  width: 100%;
-  top:-40rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index:120;
-  height: 100vh;
-}
-
-.pf-title-text h2 {
-  font-weight: bold;
-  text-decoration: underline;
-  text-align: center;
-  color: #fff;
-  font-size: 6.5rem;
-  text-shadow: 2px 2px 5px #aaa;
-}
-/* nav list group */
-.pf-list-group {
-  display: flex;
-  margin: 0 auto;
-  width: 100rem;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 0 9rem;
-  z-index: 999;
-  /* transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 0), width 0.3s cubic-bezier(0.47, 0, 0.25, 0.0) ; */
-}
-
-.pf-list-group li {
-  width: 32rem;
-  line-height: 32rem;
-  position: relative;
-  border: 1px solid #333;
-  border-radius: 2.5rem;
-  box-shadow: 1px 1px 5px #000;
-}
-
-.pf-list-group li a:hover img {
-  width: 80%;
-}
-
-.pf-list-group a {
+.cw-navbar { 
   display: block;
-  font-size: 3.6rem;
+  width: 100%;
+  background-color: #fff;
+  margin: 0 auto;
+}
+.cw-navbar-list{ 
+  display: flex;
+  width: 160rem;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: #fff;
+}
+.cw-navbar-list .cw-navbar-item {
+  /* background-color: #333; */
+  padding: 0 3rem;
+  position: relative;
+  height: 5rem;
+}
+.cw-navbar-list li{
+  transition : all 0.3s ease-in-out;
+}
+.cw-navbar-list li a {
+  text-align: center;
+  display: block;
+  line-height: 5rem;
+  color: #000;
+  font-size: 2rem;
+  position: relative;
+  transition : all 0.3s ease-in-out;
+}
+.cw-navbar-list .cw-navbar-item:not(:last-child)::after {
+  display: block;
+  position: absolute;
+  content: '';
+  width: 0.1rem;
+  height: 1.5rem;
+  right: 0;
+  background-color: #aeaeae;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.cw-navbar-list li .navbar-link{
+  transition: all 0.3s ease-in-out;
+}
+.cw-navbar-list li .navbar-link:hover{
+  color: #0fc;
+}
+
+
+.cw-navbar-item.implant-menu{
+  position: relative;
+}
+.cw-navbar-item.treatment-menu{
+  position: relative;
+}
+.cw-navbar-item.partner-menu{
+  position: relative;
+}
+.cw-navbar-item.intro-menu{
+  position: relative;
+}
+
+.cw-navbar-item .depth-menu {
+  white-space: nowrap;
+  min-width: 100%;
+}
+
+.cw-navbar-item:hover .depth-menu {
+  width: auto;
+  overflow: visible;
+}
+
+.depth-menu {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: auto;
+  padding: 0;
   /* background-color: #fc0; */
-  width: 32rem;
-  color: #000;
-  height: 32rem;
-  position: relative;
+  transition: opacity 0.3s ease;
+  overflow: hidden;
 }
 
-.pf-list-group li:not(:last-child)::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  width: 0rem;
-  margin-right: -4.5rem;
-  height: 10rem;
-  border-right: 0.3rem solid #000;
-  display: block;
-}
-
-.pf-list-group li a img {
-  vertical-align: top;
-  width: 75%;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-}
-
-.pf-img-trans {
-  transition: opacity 0.2s ease-in-out;
-  /* opacity 변화에 대한 애니메이션 설정 */
+/* hover 시 공통 적용 스타일 */
+.cw-navbar-item:hover .depth-menu {
+  height: auto;
   opacity: 1;
-  /* 기본 opacity 값 */
 }
 
-/* pf-list-group 메인 네비게이션 위치 이동 */
-
-.pf-list-group.on {
-  position: absolute;
-  margin: 0 auto;
-  width: 25rem;
-  height: 10rem;
-  right: 12.5%;
-  top: 0;
-  z-index: 999;
-  opacity: 0.5;
-  gap: 0 5rem;
-}
-
-.pf-list-group.on li {
-  width: 6.25rem;
-  line-height: 6.25rem;
-  position: relative;
-  border: 0.05rem solid #333;
-  border-radius: 1.25rem;
-  box-shadow: 0.05rem 0.05rem 0.25rem #000;
-}
-
-.pf-list-group.on li a:hover img {
-  width: 80%;
-}
-
-.pf-list-group.on a {
-  display: block;
-  font-size: 3.6rem;
-  width: 6.25rem;
-  color: #000;
-  line-height: 6.25rem;
-  height: 6.25rem;
+.depth-menu li {
+  width: 100%;
   position: relative;
 }
 
-.pf-list-group.on li:not(:last-child)::before {
+.depth-menu li a {
+  padding: 0 2rem;
+  position: relative;
+}
+.depth-menu li:hover{
+  background-color: #eee;
+}
+.depth-menu li a::before{
   content: '';
   position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  width: 0rem;
-  height: 0.2rem;
-  border-right: 0.05rem solid #000;
+  z-index: 3;
   display: block;
-}
-
-.pf-list-group.on li a img {
-  vertical-align: top;
-  width: 75%;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  left: 50%;
+  width: 0;
+  height: 0;
   top: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  left: 1rem;
+  transform: translateY(-50%);
+  border-left: 9px solid rgba(20,30,230, 0.5);
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
 }
 
-/* header 영역 */
 
-header .header-container {
+
+/* dropdown-menu style */
+.cw-navbar-item .depth-menu {
+  z-index: 999;
+  background-color: #fff;
+  overflow: hidden;
+}
+.depth-menu.implant-menu{
+  display: block;
+  left: 0;
+  position: absolute;
+  width: auto;
+  opacity:0;
+  transition: opacity 0.3s ease;
+}
+.depth-menu.treatment-menu{
+  display: block;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  opacity:0;
+  transition: opacity 0.3s ease;
+}
+.depth-menu.partner-menu{
+  display: block;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  opacity:0;
+  transition: opacity 0.3s ease;
+}
+.depth-menu.intro-menu{
+  display: block;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  opacity:0;
+  transition: opacity 0.3s ease;
+}
+.cw-navbar-item.implant-menu:hover{
+  transition: opacity 0.3s ease-in-out;
+}
+.depth-menu li a{
+  text-align: left;
+}
+main.cw-main{
+  width: 100%;
   position: relative;
 }
 
-header .header-panel {
-  display: block;
+/* main area */
+.cw-video-container{
+  position: absolute;
   top: 0;
   left: 0;
+  z-index: 20;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(180deg, rgba(0,0,0,0.3) 25%, rgba(255,255,255,0.3) 100%);
+  overflow: hidden;
+}
+.dental-link{
+  position: absolute;
+  font-size: 25rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dental-link a{
+  text-align: center;
+  border: 1px solid #fff;
+  font-size: 4.5rem;
+  padding: 0rem 5rem;
+}
+
+
+
+/* section panel */
+section{
+  margin-top: -20rem;
   width: 100%;
   height: 100vh;
   position: relative;
-  background: linear-gradient(0deg, rgb(255,255,255), rgb(255,255,255), rgb(70, 70, 70));
+  /* background-color: #ffc; */
+}
+  .section-tit1{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    margin: 0 auto;
+    background-image: url('../img/dentist-kindly.jpg');
+    background-size: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    & .section1-bg{
+      background-color: rgba(0,0,0,0.3);
+    }
+    & p{
+      margin-top: 2rem;
+      color:#fff;
+      text-shadow: 0px 0px 5px #333;
+      font-size:7rem;
+      text-align: center;
+      & span{
+        font-size: 7rem;
+        font-weight: bold;
+      }
+    }
+    & hr{
+      width: 50rem;
+      height: 0.5rem;
+      background-color: #000;
+      margin: 0 auto;
+    }
 }
 
-/* .txt-panel {} */
+section.section-tit2{
+  background-color: #eee;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  position: relative;
+  & h3{
+    position: absolute;
+    top: 5rem;
+    font-size: 5rem;
+    color: #000;
+  }
+  & p{
+    margin-top: 2rem;
+    color:#fff;
+    text-shadow: 0px 0px 5px #333;
+    font-size:7rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    & span{
+      font-size: 7rem;
+      font-weight: bold;
+    }
+  }
+  & hr{
+    width: 25rem;
+    height: 0.2rem;
+    background-color: #000;
+    margin: 3rem auto;
+  }
+}
+.fa-star{
+  transition :all 0.3s ease-in-out;
+  color : #fc0;
+}
+.fa-star:hover{
+  color:green;
+}
+.section-tit2 h4{
+  margin: 5rem;
+  font-size: 3rem;
+  font-weight: bold;
+}
+.section-tit2 span{
+  font-size: 1.5rem;
+}
+.section-tit2 .tit2-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0 10rem;
+  margin: 5rem 30rem 0;
+  text-align: center;
+}
+.tit2-list i{
+  color : #fc0;
+  margin-bottom: 2rem;
+}
+.tit2-list i:hover{
+  color : #0fc;
+}
+.tit2-list li{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.tit2-list li p{
+  font-size: 1.5rem;
+  text-shadow : none;
+  color : #000;
+  font-weight: normal;
+  text-align: center;
+}
+
+.tit2-list li p b{
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* section tit3 */
+section.section-tit3{
+  background-color: #fff;
+  display: flex;
+  justify-content: center;  align-items: center;
+  flex-direction: column;
+  height: 50vh;
+  & .reserve-tag{
+    margin-top: 5rem;
+    width: 108rem;
+    text-align: right;
+  }
+  & a{
+    color : #000;
+    font-size: 2rem;
+    border: 1px solid #000;
+    background-color: #000;
+    color : #fff;
+    padding: 1rem 2rem;
+    align-items: flex-end;
+    text-align: right;
+    margin-right: 5rem;
+  }
+  & p{
+    font-size: 2rem;
+    margin-right: 5rem;
+    width: 108rem;
+    margin-top: 5rem;
+    font-weight: 600;
+  }
+}
+.section-tit3 h3{
+  display: block;
+  text-align: left;
+  font-size: 5rem;
+  width: 108rem;
+  & span{ 
+    font-size: 6rem;
+  }
+  
+}
+
+/* ** special style  */
+.tit3-strong-green{
+  color: green;
+  font-size: 2.5rem;
+}
+.tit3-strong-blue{
+  color: blue;
+  font-size: 2.5rem;
+}
+
+/* section tit4 */
+section.section-tit4{
+  width: 108rem;
+  margin: 0 auto;
+  display: flex;
+  height: 50vh;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  gap: 0 10rem;
+  margin-bottom: 20rem;
+  & h3{
+    display: block;
+    text-align: center;
+    font-size: 5rem;
+    & span{
+      font-size: 6rem;
+    }
+  }
+  & p{
+    font-size: 2rem;
+    margin-right: 5rem;
+    margin-top: 5rem;
+    font-weight: 600;
+    text-align: center;
+  }
+  & a{
+    color: #000;
+    position: absolute;
+    font-size: 2rem;
+    width: 13rem;
+    border: 1px solid #000;
+    padding: 1rem 0;
+    right: 0;
+    bottom: 12rem;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    vertical-align: top;
+  }
+}
+
+.katalk-icon{
+  color:#fff;
+  background-color: #fff;
+}
+
+
+section.section-tit5{
+  display: block;
+  & img{
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    opacity: 0.5;  
+  }
+}
+
+/* column section */
+section.section-tit6{
+  height: 140vh;
+  
+  background-image: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(70,20,200,0.3));
+}
+
+section.column-section{
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap :wrap;
+  align-items: center;
+  & .column-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0 5rem;
+    margin-bottom: 3rem;
+    & li{
+      /* border: 1px solid #000; */
+      height: 25rem;
+      width: 60rem;
+      overflow: hidden;
+    }
+    & img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  & .column-list1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0 5rem;
+    & li{
+      /* border: 1px solid #000; */
+      height: 20rem;
+      width: 54rem;
+      overflow: hidden;
+      & img{
+        vertical-align: top;
+        width: 100%;
+        height: 100%;
+        scale: 2;
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+.column-group{
+  width: 108rem;
+}
+.column-list1 li:last-child{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+a.column-link{
+  font-size: 5rem;
+  color: #000;
+}
+
+/* form-control */
+.contact-container{
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* 치우치과 빠른 상담 신청하기*/
+.contact-inner{
+  width: 72rem;
+  & h3{
+    font-size: 4.2rem;
+    text-align: center;
+    & span{
+      font-size: 5rem;
+      font-weight: bold;
+    }
+  }
+  & .cw-form-control{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 48rem;
+    margin: 0 auto;
+    margin-top: 3rem;
+  }
+}
+.contact-container{
+  margin-top: 2rem;
+}
+.cw-form-control .control-label{
+  text-align: left;
+}
+
+.cw-form-control label {
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+.cw-form-control input{
+  width: 100%;
+  height: 3rem;
+}
+.cw-form-control .phone-area{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  & span{
+    font-size: 2rem;
+    margin: 0 0.5rem;
+  }
+}
+.cw-form-control input[name="phone"]{
+  
+  width: calc( 48rem / 6 );
+}
+
+.cw-form-control select{
+  width: 100%;
+  height: 3rem;
+  font-size: 1.5rem;
+  & option { 
+    font-size: 1.5rem;
+  }
+} 
+.cw-form-control textarea{
+  width: 100%;
+  height: 15rem;
+  font-size: 1.5rem;
+}
+.cw-form-control .agree-area{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  & #gather_personal{
+    width: 2rem;
+    height: 2rem;
+    margin-left: 2rem;
+  }
+}
+
+.cw-form-control input[type="submit"]{
+  width: 100%;
+  margin-top: 1rem;
+  height: 5rem;
+  color:#fff;
+  background-color: #000;
+  font-size: 2rem;
+}
+
+/* footer */
+footer{
+  height: 100vh;
+  width: 100%;
+  background-color: #333;
+}
 
 /* header title 텍스트 영역 */
 header .header-title1 {
