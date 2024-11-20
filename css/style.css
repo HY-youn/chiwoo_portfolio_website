@@ -21,6 +21,9 @@ width: 100%;
 .doc-bar-inner{
   width: 160rem;
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .doc-bar .right-area{
   /* background-color: #fc0;  */
@@ -280,6 +283,8 @@ section{
 
 section.section-tit2{
   background-color: #eee;
+  width: 100%;
+  height: 130vh;
   display: flex;
   flex-direction: column;
   justify-content: center; 
@@ -287,7 +292,7 @@ section.section-tit2{
   position: relative;
   & h3{
     position: absolute;
-    top: 5rem;
+    top: 7rem;
     font-size: 5rem;
     color: #000;
   }
@@ -405,11 +410,11 @@ section.section-tit3{
 /* ** special style  */
 .tit3-strong-green{
   color: green;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
 }
 .tit3-strong-blue{
   color: blue;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
 }
 
 /* section tit4 */
@@ -634,13 +639,15 @@ a.column-link{
 
 /* footer */
 footer{
-  height: 100vh;
-  width: 100%;
+    width: 100%;
+    height: 100vh;
   background-color: #333;
   display: flex;
+  position: relative;
 }
 
 .footer-container{
+  margin-top: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -665,16 +672,14 @@ footer{
   }
 }
 #map {
-  width: 500px;
+  width: 50rem;
   position: relative;
-  height: 400px;
+  height: 40rem;
 }
 
 .address-info {
   display: block;
   padding: 2rem;
-  width: 50rem;
-  height: 40rem;
   /* background: #f8f9fa; */
   border-radius: 1rem;
 }
@@ -701,6 +706,12 @@ footer{
   border-radius: 0.5rem;
   cursor: pointer;
   font-size: 2rem;
+  transition : all 0.1s ease-in-out;
+}
+
+.address-info button:hover{
+  background-color: #3e3e3e;
+  color: #fff;
 }
 
 .customoverlay {
@@ -724,11 +735,727 @@ footer{
 /* footer dental schedule */
 .dental_schedule{
   width: 42rem;  
-  & p{
-    font-size: 2rem;
+  height: 60rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem 0;
+}
+
+.schedule_box p{
+  font-size: 3rem;
+}
+.schedule_btn_box{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+  gap: 0 1rem;
+}
+.schedule_box button {
+  border: none;
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  color:#000;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 2rem;
+  transition : all 0.1s ease-in-out
+}
+
+.schedule_box button:hover{
+  background-color: #3e3e3e;
+  color: #fff;
+}
+
+.footer_copyright{
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 50%;
+  text-align: center;
+  line-height: 3rem;
+  color: #fff;
+  transform: translateX(-50%);
+  padding-top: 10rem;
+  & p {
+    font-size: 1.5rem;
   }
 }
 
+.cw-img-container {
+  width: 100%;
+  height: auto;
+}
+
+.cw-img-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+@media (max-width: 412px) {
+/* header 412px */
+.cw-container .doc-bar{
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem 0;
+  background-color: #eee;
+  position: relative;
+}
+
+.doc-bar-inner{
+  width: 100%;
+  margin: 0 auto;
+}
+.doc-bar-inner .add_menu_btn {
+  position: absolute;
+  left: 0;
+  width: 2rem;
+  z-index: 99;
+  border: none;
+  height: 2.5rem;
+  margin-left: 3rem;
+  scale: 2;
+  color: #000;
+  background-color: transparent;
+}
+.doc-bar-inner .add_menu_btn.active {
+  display: none;
+}
+.doc-bar .add_menu_area{
+  position: absolute;
+  top: 0;
+  left: -20%;
+  width: 0%;
+  height: 100vh;
+  background-color: rgba(200,200,200,0.7);
+  transition: all 0.3s ease-in-out;
+}
+.add_menu_close_btn
+{
+  display: none;
+}
+.doc-bar .add_menu_area.active .add_menu_close_btn{
+  display: block;
+  position: absolute;
+  top: 0;
+  right: -5rem;
+  width: 5rem;
+  height: 5rem;
+  background-color: #000;
+  color:#fff;
+}
+.doc-bar .add_menu_area.active{
+  width: 80%;
+  left: 0;
+}
+.doc-bar .add_menu_area_login{
+  width: 100%;
+  height: 5rem;
+  background-color: #000;
+}
+.doc-bar .add_menu_area .add_menu_area_navbar{
+  display: block;
+  width: 100%;
+  background-color: #000;
+  & .cw-navbar{
+    border-bottom: 1px solid #fff;
+    color:#000;
+  }
+}
+.doc-bar .right-area{
+  /* background-color: #fc0;  */
+}
+.doc-bar .logo-img{
+  width: 10rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+}
+.sns-icon{ 
+  display: none;
+}
+
+.login-bar li a {
+  font-size: 0;
+  color: #000;
+}
+.add_menu_area_navbar .cw-navbar { 
+  display: block;
+  width: 100%;
+  background-color: #000;
+}
+.add_menu_area_navbar .cw-navbar-list{ 
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  text-align: left;
+  margin: 0;
+  background-color: #000;
+}
+.add_menu_area_navbar .cw-navbar-list .cw-navbar-item {
+  padding: 0 3rem;
+  position: relative;
+  height: 5rem;
+}
+.add_menu_area_navbar .cw-navbar-list li{
+  transition : all 0.3s ease-in-out;
+}
+.add_menu_area_navbar .cw-navbar-list li a {
+  display: block;
+  line-height: 5rem;
+  color: #fff;
+  font-size: 2rem;
+  position: relative;
+  transition : all 0.3s ease-in-out;
+}
+.add_menu_area_navbar .cw-navbar-list .cw-navbar-item:not(:last-child)::after {
+  display: none;
+}
+.add_menu_area_navbar .cw-navbar-list li .navbar-link{
+  transition: all 0.3s ease-in-out;
+  text-align: left;
+}
+.add_menu_area_navbar .cw-navbar-list li .navbar-link:hover{
+  color: #0fc;
+}
+
+
+  .cw-swiper {
+    display: none;
+}
+.cw-img-container{
+  position: absolute;
+  top: 10rem;
+  z-index: 10;
+}
+.cw-video-container{
+  position: absolute;
+  top: 20rem;
+  left: 0;
+  z-index: 20;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.dental-link{
+  position: absolute;
+  font-size: 5rem;
+  top: 0;
+  left: 0;
+}
+
+.dental-link a{
+  text-align: center;
+  border: 1px solid #fff;
+  font-size: 2rem;
+  padding: 0;
+}
+/* 412px 호환 section1  */
+section{
+  width: 100%;
+  position: relative;
+  /* background-color: #ffc; */
+}
+  .section-tit1{
+    z-index: 11;
+    width: 100%;
+    height: 90rem;
+    position: relative;
+    margin: 0 auto;
+    background-image: url('../img/dentist-kindly.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & .section1-bg{
+      background-color: rgba(0,0,0,0.3);
+    }
+    & p{
+      margin-top: 2rem;
+      color:#fff;
+      text-shadow: 0px 0px 5px #333;
+      font-size:2rem;
+      text-align: center;
+      & span{
+        font-size: 2rem;
+        font-weight: bold;
+      }
+    }
+    & hr{
+      width: 50rem;
+      height: 0.5rem;
+      background-color: #000;
+      margin: 0 auto;
+    }
+}
+
+/* section2 for max-width 412px */
+section.section-tit2{
+  background-color: #eee;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  position: relative;
+  & h3{
+    position: absolute;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
+    font-size: 2.2rem;
+    color: #000;
+    & hr{
+      position: absolute;
+      width: 25rem;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      background-color: #000;
+    }
+  }
+  & p{
+    color:#fff;
+    text-shadow: 0px 0px 5px #333;
+    font-size:2rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    & span{
+      font-size: 2.3rem;
+      font-weight: bold;
+    }
+  }
+
+}
+.fa-star{
+  transition :all 0.3s ease-in-out;
+  margin-top: -2rem;
+  scale: 0.6;
+  color : #fc0;
+}
+.fa-star:hover{
+  color:green;
+}
+.section-tit2 h4{
+  margin: 1.5rem;
+  font-size: 2.3rem;
+  font-weight: bold;
+}
+.section-tit2 h5{
+  color:#fff;
+  text-shadow: 0px 0px 5px #333;
+  font-size:2rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  
+}
+.section-tit2 span{
+  font-size: 1.5rem;
+}
+.section-tit2 .tit2-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem 1rem;
+  margin: 1rem 0;
+  text-align: center;
+  & span {
+    margin-top: -1rem;
+  }
+}
+.tit2-list i{
+  color : #fc0;
+}
+.tit2-list i:hover{
+  color : #0fc;
+}
+.tit2-list li{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap : -10rem 0;
+  position: relative;
+}
+.tit2-list li::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 35%;
+  top: 55%;
+  text-align: center;
+  transform: translateY(-50%);
+  height: 0.02rem;
+  background-color: #aaa;
+}
+.tit2-list li p{
+  font-size: 1rem;
+  width: 75%;
+  text-shadow : none;
+  color : #000;
+  font-weight: normal;
+  text-align: center;
+  line-height: 1.5rem;
+}
+
+.tit2-list li p b{
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+
+/* section3 for max-width 412px */
+section.section-tit3{
+  background-color: #fff;
+  display: flex;
+  justify-content: center;  
+  align-items: center;
+  flex-direction: column;
+  height: 50rem;
+  & .reserve-tag{
+    margin-top: 5rem;
+    width: 100%;
+    text-align: right;
+  }
+  & a{
+    color : #000;
+    font-size: 2rem;
+    border: 1px solid #000;
+    background-color: #000;
+    color : #fff;
+    padding: 1rem 2rem;
+    align-items: flex-end;
+    text-align: right;
+  }
+  & p{
+    font-size: 1.5rem;
+    width: 100%;
+    margin-top: 5rem;
+    margin-right: 0;
+    padding: 0 2rem;
+    font-weight: 600;
+  }
+}
+.section-tit3 h3{
+  display: block;
+  text-align: left;
+  color : #0ac;
+  font-size: 2.5rem;
+  width: 100%;
+  padding: 0 2rem;
+  & span{ 
+    font-size: 3.2rem;
+    color :#00c;
+  }
+  
+}
+
+/* ** special style  */
+.tit3-strong-green{
+  color: green;
+  font-size: 1.5rem;
+}
+.tit3-strong-blue{
+  color: blue;
+  font-size: 1.5rem;
+}
+
+/* section4 for max-width 412px */
+section.section-tit4{
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: -15rem;
+  margin-bottom: 15rem;
+  gap: 0 2rem;
+  & h3{
+    display: block;
+    text-align: center;
+    font-size: 2rem;
+    & span{
+      font-size: 1.8rem;
+    }
+  }
+  & p{
+    font-size: 2rem;
+    margin-right: 5rem;
+    margin-top: 5rem;
+    font-weight: 600;
+    text-align: center;
+  }
+  & a{
+    color: #000;
+    position: absolute;
+    font-size: 1rem;
+    display: block;
+    width: 6rem;
+    border: 1px solid #000;
+    flex-shrink: 0;
+    padding: 1rem 0;
+    right: 30%;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+  }
+}
+
+/* section5 for max-width 412px */
+section.section-tit5{
+  display: block;
+  height: 100%;
+  & img{
+    width: 100%;
+    height: 30rem;
+    object-fit: cover;
+    opacity: 0.5;  
+  }
+   & .column-list{
+    display: flex;
+    width: 30rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & li{
+      /* border: 1px solid #000; */
+      height: 25rem;
+      width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+      padding: 0;
+    }
+    & img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  & .column-list1{
+    width: max-content;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    & li{
+      /* border: 1px solid #000; */
+      padding: 0;
+      height: 20rem;
+      width: 100%;
+      overflow: hidden;
+      & img{
+        vertical-align: top;
+        width: 100%;
+        height: 100%;
+        scale: 2;
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+/* column section */
+
+section.column-section{
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  height: 200vh;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap :wrap;
+  align-items: center;
+  & .column-list{
+    width: 40rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    & li{
+      /* border: 1px solid #000; */
+      height: 25rem;
+      width: 40rem;
+      margin: 0 auto;
+      padding: 0 2rem;
+      overflow: hidden;
+    }
+    & img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  & .column-list1{
+     width: 40rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    & li{
+     height: 25rem;
+      width: 40rem;
+      margin: 0 auto;
+      padding: 0 2rem;
+      overflow: hidden;
+      & img{
+        vertical-align: top;
+        width: 100%;
+        height: 100%;
+        scale: 1;
+        object-fit: contain;
+      }
+    }
+  }
+}
+.column-list1 li:last-child{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+a.column-link{
+  font-size: 3rem;
+  color: #000;
+  display: block;
+  height: 25rem;
+  width: 40rem;
+  text-align: center;
+  line-height: 25rem;
+  background-color: #ccc;
+}
+.column-group{
+  width: 100%;
+}
+
+/* contact section */
+
+/* form-control */
+.contact-container{
+  width: 40rem;
+  flex-shrink: 0;
+  margin: 0 auto;
+  /* border: 1px solid #000;  */
+}
+
+
+/* 치우치과 빠른 상담 신청하기*/
+.contact-inner{
+  width: 26rem;
+  & h3{
+    font-size: 2.1rem;
+    text-align: center;
+    & span{
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+  }
+  & .cw-form-control{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 20rem;
+    margin: 0 auto;
+    margin-top: 3rem;
+  }
+}
+.contact-container{
+  margin-top: 2rem;
+}
+.cw-form-control .control-label{
+  text-align: left;
+}
+
+.cw-form-control label {
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+.cw-form-control input{
+  width: 100%;
+  height: 3rem;
+}
+.cw-form-control .phone-area{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  & span{
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+  }
+}
+.cw-form-control input[name="phone"]{
+  
+  width: calc( 32rem / 6 );
+}
+
+.cw-form-control select{
+  width: 100%;
+  height: 3rem;
+  font-size: 1.5rem;
+  & option { 
+    font-size: 1.5rem;
+  }
+} 
+.cw-form-control textarea{
+  width: 100%;
+  height: 15rem;
+  font-size: 1.5rem;
+}
+.cw-form-control .agree-area{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  & #gather_personal{
+    width: 2rem;
+    height: 2rem;
+    margin-left: 2rem;
+  }
+}
+
+.cw-form-control input[type="submit"]{
+  width: 100%;
+  margin-top: 1rem;
+  height: 5rem;
+  color:#fff;
+  background-color: #000;
+  font-size: 2rem;
+}
+
+
+.kakao-talk-img{
+    width: 20%;
+}
+.katalk-icon{
+  color:#fff;
+  background-color: #fff;
+  width: 20%;
+}
+/* kakaomap_container */
+  .kakaomap-container {
+    display: none;
+  }
+  
+  #map {
+    width: 100%;
+    height: 300px;
+  }
+}
 
 @media (max-width: 768px) {
   .kakaomap-container {
@@ -739,4 +1466,86 @@ footer{
     width: 100%;
     height: 300px;
   }
+}
+
+.add_menu_area_navbar .cw-navbar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.add_menu_area_navbar .cw-navbar-item {
+  position: relative;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  transition: all 0.3s ease;
+}
+
+/* 기본 서브메뉴 스타일 */
+.add_menu_area_navbar .depth-menu {
+  position: relative; /* absolute가 아닌 relative로 변경 */
+  height: 0;
+  overflow: hidden;
+  margin-top: 10px;
+  background-color: #333333;
+  transition: height 0.3s ease;
+}
+
+/* hover 시 height 값 지정 */
+.add_menu_area_navbar .intro-menu{
+}
+.add_menu_area_navbar .intro-menu:hover {
+  padding-bottom: 160px; /* 서브메뉴 높이만큼 패딩 추가 */
+}
+.add_menu_area_navbar .intro-menu:hover .depth-menu {
+  height: 150px; /* 3개 항목 */
+  background-color: #444444;
+}
+
+.add_menu_area_navbar .treatment-menu:hover {
+  padding-bottom: 210px;
+}
+.add_menu_area_navbar .treatment-menu:hover .depth-menu {
+  height: 200px; /* 4개 항목 */
+  background-color: #444444;
+}
+
+.add_menu_area_navbar .implant-menu:hover {
+  padding-bottom: 110px;
+}
+.add_menu_area_navbar .implant-menu:hover .depth-menu {
+  height: 100px; /* 2개 항목 */
+  background-color: #444444;
+}
+
+.add_menu_area_navbar .partner-menu:hover {
+  padding-bottom: 260px;
+}
+.add_menu_area_navbar .partner-menu:hover .depth-menu {
+  height: 250px; /* 5개 항목 */
+  background-color: #444444;
+}
+
+/* 서브메뉴 아이템 스타일 */
+.add_menu_area_navbar .depth-menu li {
+  padding: 12px 15px;
+}
+
+.add_menu_area_navbar .depth-menu li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  font-size: 2rem;
+}
+
+/* hover 효과 */
+.add_menu_area_navbar .depth-menu li:hover {
+  background-color: #555555;
+}
+
+/* 메인 메뉴 링크 스타일 */
+.add_menu_area_navbar .navbar-link {
+  color: #333;
+  text-decoration: none;
+  display: block;
 }

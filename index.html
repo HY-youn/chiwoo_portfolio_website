@@ -17,14 +17,14 @@
   <style>
 
   </style>
-     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a97833085c47004ea20732c014414a7b"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a97833085c47004ea20732c014414a7b"></script>
 </head>
 
 <body>
   <div class="cw-container">
     <header class="cw-header">
       <div class="doc-bar">
-        <div class="doc-bar-inner d-flex justify-content-between align-items-center">
+        <div class="doc-bar-inner">
           <div class="logo-area">
             <a href="/">
               <img src="./img/cw-logo.png" alt="로고" class="logo-img">
@@ -129,7 +129,7 @@
         </div>
       </section>
       <section class="section-tit2">
-        <h3>치우치과의 진료철학</h3>
+        <h3>치우치과의 진료철학<hr></h3>
         <p>Vision</p>
         <i class="fa-solid fa-star fa-5x"></i>
 
@@ -139,18 +139,18 @@
         <span>치우치과의원에서 환자분의 소중한</span>
         <span>자연치아를 살리기 위해 최선을 다하겠습니다.</span>
         <hr>
-        <p>Core values</p>
+        <h5>Core values</h5>
         <ul class="tit2-list">
-          <li><i class="fa-solid fa-circle-check fa-3x"></i><span>통증 최소화</span>
+          <li><i class="fa-solid fa-circle-check fa-3x"></i><span>[통증 최소화]</span>
             <p>환자분의 아픔에 공감하며 두려움을 줄이는 수면 진정치료 및 무통마취기, 표면마취, 가글마취 등 세심한 전문의의 손길로 <b>덜 아프게 치료하겠습니다</b></p>
           </li>
-          <li><i class="fa-solid fa-quote-left fa-3x"></i><span>충분한 소통</span>
+          <li><i class="fa-solid fa-quote-left fa-3x"></i><span>[충분한 소통]</span>
             <p><b>환자분과의 충분한 대화</b>를 통하여 정확한 진단과 계획을 바탕으로 좋은 치료 결과를 전달합니다</p>
           </li>
-          <li><i class="fa-solid fa-thumbs-up fa-3x"></i><span>정직한 진료</span>
+          <li><i class="fa-solid fa-thumbs-up fa-3x"></i><span>[정직한 진료]</span>
             <p>과잉 진료가 아닌 <b>자연치아를 최대한 보존</b>하며 조금은 느리게 가더라도 정직하게 원칙대로 진료하겠습니다</p>
           </li>
-          <li><i class="fa-solid fa-handshake fa-3x"></i><span>철저한 위생관리</span>
+          <li><i class="fa-solid fa-handshake fa-3x"></i><span>[철저한 위생관리]</span>
             <p>깨끗하고 편안한 진료 환경을 제공하기 위해 <b>철저한 멸균과 감염관리</b>를 시행하며 위생 관리에 신경쓰고 있습니다</p>
           </li>
         </ul>
@@ -279,7 +279,7 @@
 - 위탁하는 업무의 내용 : 본인확인 업무
 
 
-② 회사는 위탁계약 체결 시 개인정보 보호법 제25조에 따라 위탁업무 수행목적 외 개인정보 처리금지, 기술적․관리적 보호조치, 재위탁 제한, 수탁자에 대한 관리․감독, 손해배상 등 책임에 관한 사항을 계약서 등 문서에 명시하고, 수탁자가 개인정보를 안전하게 처리하는지를 감독하고 있습니다.
+② 회사�� 위탁계약 체결 시 개인정보 보법 제25조에 따라 위탁업무 수행목적 외 개인정보 처리금지, 기술적․관리적 보호조치, 재위탁 제한, 수탁자에 대한 관리․감독, 손해배상 등 책임에 관한 사항을 계약서 등 문서에 명시하고, 수탁자가 개인정보를 안전하게 처리하는지를 감독하고 있습니다.
 ③ 위탁업무의 내용이나 수탁자가 변경될 경우에는 지체없이 본 개인정보 처리방침을 통하여 공개하도록 하겠습니다.
 
 <strong>제5조(이용자 및 법정대리인의 권리와 그 행사 방법)</strong>
@@ -397,24 +397,35 @@ IP주소, 쿠키, MAC주소, 서비스 이용기록, 방문기록, 불량 이용
             <p>찾아오시는 길</p>
             <div id="map">
             </div>
-              <div class="address-info">
-                <h4>치우치과의원</h4>
-                <p>광주광역시 북구 두암동 561-5 치우빌딩 2층</p>
-                <p>Tel: 062-123-4567</p>
-                <button onclick="findWay()">오시는 길</button>
-              </div>
+            <div class="address-info">
+              <h4>치우치과의원</h4>
+              <p>광주광역시 북구 두암동 561-5 치우빌딩 2층</p>
+              <p>Tel: 062-123-4567</p>
+              <button onclick="findWay()">오시는 길</button>
+            </div>
           </div>
           <div class="dental_schedule">
-            <p>진료시간 안내</p>
-            <p>월요일 09:00 ~ 18:00</p>
-            <p>화요일 09:00 ~ 18:00</p>
-            <p>수요일 09:00 ~ 18:00</p>
-            <p>목요일 09:00 ~ 18:00</p>
-            <p>금요일 09:00 ~ 18:00</p>
-            <p>토요일 09:00 ~ 18:00</p>
+            <i class="fa-solid fa-clock fa-10x"></i>
+            <div class="schedule_box">
+              <p>진료시간 안내</p>
+              <p>월요일 09:00 ~ 18:00</p>
+              <p>화요일 09:00 ~ 18:00</p>
+              <p>수요일 09:00 ~ 18:00</p>
+              <p>목요일 09:00 ~ 18:00</p>
+              <p>금요일 09:00 ~ 18:00</p>
+              <p>토요일 09:00 ~ 18:00</p>
+              <div class="schedule_btn_box">
+                <button>전화연결</button>
+                <button>카톡상담</button>
+                <button>진료예약</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <div class="footer_copyright">
+        <p>Copyright 2024. 치우치과의원. All rights reserved.</p>
+      </div>  
     </footer>
     <!-- Whole container end -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -425,31 +436,158 @@ IP주소, 쿠키, MAC주소, 서비스 이용기록, 방문기록, 불량 이용
       integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
- 
+
     <script>
+// DOM 요소 선택
+const cwVideoContainer = document.querySelector('.cw-swiper');
+const cwSwiperContainer = document.querySelector('.cw-swiper-container');
+const docBar = document.querySelector('.doc-bar');
+const docBarInner = document.querySelector('.doc-bar-inner');
+// 화면 크기 변경 감지를 위한 미디어 쿼리
+const mediaQuery = window.matchMedia('(max-width: 412px)');
+const addMenu = document.querySelector('.add_menu');
+const addMenuBtn = document.querySelector('.add_menu_btn');
+// 화면 크기에 따른 컨텐츠 변경 함수
+function handleScreenChange(e) {
+    if (e.matches) { // 화면이 412px 이하일 때
+        // 비디오 숨기기
+        cwVideoContainer.style.display = 'none';
+        
+        // 메뉴 버튼과 영역 추가
+        if (!document.querySelector('.add_menu_btn')) {
+          
+            const addMenuBtn = document.createElement('button');
+            addMenuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+            addMenuBtn.classList.add('add_menu_btn');
+            docBarInner.appendChild(addMenuBtn);
+            
+            const addMenuArea = document.createElement('div');
+            const addMenuAreaLogin = document.createElement('div');
+            const addMenuAreaNavbar = document.createElement('div');
+            addMenuArea.classList.add('add_menu_area');
+            addMenuAreaLogin.classList.add('add_menu_area_login');
+            addMenuAreaNavbar.classList.add('add_menu_area_navbar');
+            addMenuAreaNavbar.innerHTML = `
+                <ul class="cw-navbar-list">
+                  <li class="cw-navbar-item">
+                    <a class="navbar-link" href="#home">HOME</a>
+                  </li>
+                  <li class="cw-navbar-item intro-menu">
+                    <a class="navbar-link" href="#portfolio">치과소개</a>
+                    <ul class="depth-menu intro-menu">
+                      <li><a href="#">의료진 소개</a></li>
+                      <li><a href="#">병원 둘러보기</a></li>
+                      <li><a href="#">오시는 길</a></li>
+                    </ul>
+                  </li>
+                  <li class="cw-navbar-item treatment-menu">
+                    <a class="navbar-link" href="#about">진료과목</a>
+                    <ul class="depth-menu treatment-menu">
+                      <li><a href="#">임플란트</a></li>
+                      <li><a href="#">치아교정</a></li>
+                      <li><a href="#">치아미백</a></li>
+                      <li><a href="#">충치/신경치료</a></li>
+                    </ul>
+                  </li>
+                  <li class="cw-navbar-item implant-menu">
+                    <a class="navbar-link" href="#contact">전악 임플란트</a>
+                    <ul class="depth-menu implant-menu">
+                      <li><a href="#">올온포/올포원</a></li>
+                      <li><a href="#">틀니 임플란트</a></li>
+                    </ul>
+                  </li>
+                  <li class="cw-navbar-item partner-menu">
+                    <a class="navbar-link" href="#contact">제휴업체</a>
+                    <ul class="depth-menu partner-menu">
+                      <li><a href="#">치과 재료사</a></li>
+                      <li><a href="#">치과용 의료기기</a></li>
+                      <li><a href="#">치과 장비업체</a></li>
+                      <li><a href="#">치과 소독업체</a></li>
+                      <li><a href="#">치과 보험사</a></li>
+                    </ul>
+                  </li>
+                  <li class="cw-navbar-item reservation-menu">
+                    <a class="navbar-link" href="#contact">상담예약</a>
+                  </li>
+                </ul>
+            `;
+            addMenuArea.appendChild(addMenuAreaLogin);
+            addMenuArea.appendChild(addMenuAreaNavbar);
+            
+
+            const closeBtn = document.createElement('button');
+            closeBtn.innerHTML = '<i class="fa-solid fa-xmark fa-2x"></i>';
+            closeBtn.classList.add('add_menu_close_btn');
+            addMenuArea.appendChild(closeBtn);
+            
+
+            closeBtn.addEventListener('click', () => {
+                addMenuArea.classList.remove('active');
+                addMenuBtn.classList.remove('active');
+            });
+            docBarInner.appendChild(addMenuArea);
+
+            // 클릭 이벤트 리스너 추가
+            addMenuBtn.addEventListener('click', () => {
+                addMenuArea.classList.toggle('active');
+                // 선택적: 버튼 상태 변경
+                addMenuBtn.classList.toggle('active');
+            });
+        }
+
+        if (!document.querySelector('.cw-img-container')) {
+            const convertImg = document.createElement('div');
+            convertImg.classList.add('cw-img-container');
+            
+            // 이미지 요소 생성 및 추가
+            const img = document.createElement('img');
+            img.src = './img/main_thumbnail_412px.jpg'; // 실제 이미지 경로로 수정
+            img.alt = '프로필';
+            
+            convertImg.appendChild(img);
+            cwSwiperContainer.appendChild(convertImg);
+        }
+    } else {
+        // 화면이 412px 초과일 때
+        cwVideoContainer.style.display = 'block';
+        
+        // 메뉴 버튼과 영역 제거
+        const existingBtn = document.querySelector('.add_menu_btn');
+        const existingArea = document.querySelector('.add_menu_area');
+        if (existingBtn) existingBtn.remove();
+        if (existingArea) existingArea.remove();
+    }
+}
+
+// 초기 실행
+handleScreenChange(mediaQuery);
+
+// 화면 크기 변경 이벤트 리스너
+mediaQuery.addListener(handleScreenChange);
+
       // kakaomap API//
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(35.1744, 126.9115), // 치우치과 위치의 위도, 경도로 수정
-        level: 3 // 지도의 확대 레벨
-    };
+      var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+        mapOption = {
+          center: new kakao.maps.LatLng(35.1744, 126.9115), // 치우치과 위치의 위도, 경도로 수정
+          level: 3 // 지도의 확대 레벨
+        };
 
-// 지도를 표시할 div와 지도 옵션으로 지도를 생성합니다
-var map = new kakao.maps.Map(mapContainer, mapOption); 
+      // 지도를 표시할 div와 지도 옵션으로 지도를 생성합니다
+      var map = new kakao.maps.Map(mapContainer, mapOption);
 
-// 마커가 표시될 위치입니다 
-var markerPosition  = new kakao.maps.LatLng(35.1744, 126.9115); // 치우치과 위치로 수정
+      // 마커가 표시될 위치입니다 
+      var markerPosition = new kakao.maps.LatLng(35.1744, 126.9115); // 치우치과 위치로 수정
 
-// 마커를 생성합니다
-var marker = new kakao.maps.Marker({
-    position: markerPosition
-});
+      // 마커를 생성합니다
+      var marker = new kakao.maps.Marker({
+        position: markerPosition
+      });
 
-// 마커가 지도 위에 표시되도록 설정합니다
-marker.setMap(map);
+      // 마커가 지도 위에 표시되도록 설정합니다
+      marker.setMap(map);
 
-// 커스텀 오버레이에 표출될 내용
-var content = `
+      // 커스텀 오버레이에 표출될 내용
+      var content = `
     <div class="customoverlay">
         <a href="https://map.kakao.com/link/map/치우치과의원,35.1744,126.9115" target="_blank">
             <span class="title">치우치과의원</span>
@@ -457,19 +595,19 @@ var content = `
     </div>
 `;
 
-// 커스텀 오버레이를 생성합니다
-var customOverlay = new kakao.maps.CustomOverlay({
-    map: map,
-    position: markerPosition,
-    content: content,
-    yAnchor: 1 
-});
+      // 커스텀 오버레이를 생성합니다
+      var customOverlay = new kakao.maps.CustomOverlay({
+        map: map,
+        position: markerPosition,
+        content: content,
+        yAnchor: 1
+      });
 
-// 길찾기 함수
-function findWay() {
-    window.open('https://map.kakao.com/link/to/치우치과의원,35.1744,126.9115');
-}
-    
+      // 길찾기 함수
+      function findWay() {
+        window.open('https://map.kakao.com/link/to/치우치과의원,35.1744,126.9115');
+      }
+
 
       class NavbarController {
         constructor() {
@@ -840,7 +978,7 @@ function findWay() {
         { id: 1, title: "블로그 조회수 중 가장 높았던 것", views: 1032, date: "2024/09/08", link: "https://blog.naver.com/zkade/221919313991" },
         { id: 2, title: "거래가 이루어진 부동산", views: 330, date: "2023/01/02", link: "https://blog.naver.com/industry-/223040397926" },
         { id: 3, title: "블로그 컨텐츠 - 독서리뷰", views: 101, date: "2024/10/22", link: "https://blog.naver.com/PostList.naver?blogId=zkade&from=postList&categoryNo=31" },
-        { id: 4, title: "챗GPT로 취업 성공하기", views: 11, date: "2024/02/23", link: "https://blog.naver.com/PostList.naver?blogId=zkade&from=postList&categoryNo=31" }
+        { id: 4, title: "챗GPT 취업 성공하기", views: 11, date: "2024/02/23", link: "https://blog.naver.com/PostList.naver?blogId=zkade&from=postList&categoryNo=31" }
       ];
       // 데이터베이스 처럼 배열로 연동하기 php로도 구현해볼 것
       function populateTable() {
