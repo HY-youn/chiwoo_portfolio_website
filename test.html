@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body { 
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  .box {
+    height: 100px;
+    margin: 0 auto;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    line-height: 100px;
+    animation: ani1 5s infinite ease-in-out;
+    text-transform: uppercase;
+  }
+  .space{
+    height: 100px;
+  }
+  .box1 {
+    width: 400px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #666;
+  }
+  @keyframes ani1 {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+      opacity:1;
+    }
+  }
+  header {
+    height: 1100px;
+    background-color: #333;
+  }
+  
+  header p {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    animation: floating 1.5s infinite ease-in-out;
+    transition: opacity 0.3s ease;
+  }
+  
+  @keyframes floating {
+    0% {
+      transform: translate(-50%, 0);
+    }
+    50% {
+      transform: translate(-50%, -20px);
+    }
+    100% {
+      transform: translate(-50%, 0);
+    }
+  }
+
+  .hide {
+    opacity: 0;
+  }
+</style>
+<body>
+  <header>
+    <p>아래로 스크롤 하세요</p>
+  </header>
+  <div class="box">animation</div>
+  <div class="spacer"></div>
+  <div class="box1">motion</div>
+</body>
+<script>
+  const scrollText = document.querySelector('header p');
+  
+  window.addEventListener('scroll', () => {
+    const scrollOffset = window.scrollY;
+    
+    if(scrollOffset > 1) {
+      scrollText.classList.add('hide');
+    } else {
+      scrollText.classList.remove('hide');
+    }
+  });
+</script>
+</html>
